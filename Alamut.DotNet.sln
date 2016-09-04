@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{17982A1F-1B1A-41C8-A200-1922BA6FFD8E}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Core", "src\Alamut.Core\Alamut.Core.xproj", "{5577C183-60C5-461F-8514-300F67B11E65}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Helpers", "src\Alamut.Helpers\Alamut.Helpers.xproj", "{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Utilities", "src\Alamut.Utilities\Alamut.Utilities.xproj", "{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Data", "src\Alamut.Data\Alamut.Data.xproj", "{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Data.MongoDb", "src\Alamut.Data.MongoDb\Alamut.Data.MongoDb.xproj", "{8302E370-A4A2-4D94-B68E-DDBB225D53D4}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Service", "src\Alamut.Service\Alamut.Service.xproj", "{23BC6B34-44B9-41B6-8AB8-2E334C28A523}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{A5252323-3708-4EE6-BF28-80B1FA80E64F}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\alamut-pack.bat = nuget\alamut-pack.bat
+		nuget\alamut-publish.bat = nuget\alamut-publish.bat
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5577C183-60C5-461F-8514-300F67B11E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5577C183-60C5-461F-8514-300F67B11E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5577C183-60C5-461F-8514-300F67B11E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5577C183-60C5-461F-8514-300F67B11E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8302E370-A4A2-4D94-B68E-DDBB225D53D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8302E370-A4A2-4D94-B68E-DDBB225D53D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8302E370-A4A2-4D94-B68E-DDBB225D53D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8302E370-A4A2-4D94-B68E-DDBB225D53D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23BC6B34-44B9-41B6-8AB8-2E334C28A523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23BC6B34-44B9-41B6-8AB8-2E334C28A523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23BC6B34-44B9-41B6-8AB8-2E334C28A523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23BC6B34-44B9-41B6-8AB8-2E334C28A523}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5577C183-60C5-461F-8514-300F67B11E65} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
+		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
+		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
+		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
+		{8302E370-A4A2-4D94-B68E-DDBB225D53D4} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
+		{23BC6B34-44B9-41B6-8AB8-2E334C28A523} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
+	EndGlobalSection
+EndGlobal
