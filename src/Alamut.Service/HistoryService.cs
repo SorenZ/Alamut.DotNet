@@ -26,13 +26,13 @@ namespace Alamut.Service
             _historyRepository = historyRepository;
         }
 
-        //public HistoryService(IHistoryRepository historyRepository,
-        //    IRepository<TDocument> repository = null,
-        //    IMapper mapper = null)
-        //{
-        //    _crudService = new CrudService<TDocument>(repository, mapper);
-        //    _historyRepository = historyRepository;
-        //}
+        public HistoryService(IHistoryRepository historyRepository,
+            IRepository<TDocument> repository,
+            IMapper mapper)
+        {
+            _crudService = new CrudService<TDocument>(repository, mapper);
+            _historyRepository = historyRepository;
+        }
 
         public ServiceResult<string> Create<TModel>(TModel model)
         {
@@ -82,12 +82,11 @@ namespace Alamut.Service
 
         public virtual ServiceResult Delete(string id)
         {
-            var entity = _crudService.ReadOnly.Get(id);
-
             var result = _crudService.Delete(id);
-
             if (!result.Succeed) return result;
             if (_historyRepository == null) return result;
+
+            var entity = _crudService.ReadOnly.Get(id);
 
             var history = new BaseHistory
             {

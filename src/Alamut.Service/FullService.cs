@@ -102,20 +102,20 @@ namespace Alamut.Service
 
         #region IHistoryService
 
-        //public ServiceResult<string> Create<TModel>(TModel model)
-        //{
-        //    return _historyService.Create(model);
-        //}
+        ServiceResult<string> IHistoryService<TDocument>.Create<TModel>(TModel model)
+        {
+            return _historyService.Create(model);
+        }
 
-        //public ServiceResult Update<TModel>(string id, TModel model)
-        //{
-        //    return _historyService.Update(id, model);
-        //}
+        ServiceResult IHistoryService<TDocument>.Update<TModel>(string id, TModel model)
+        {
+            return _historyService.Update(id, model);
+        }
 
-        //public ServiceResult Delete(string id)
-        //{
-        //    return _historyService.Delete(id);
-        //}
+        ServiceResult IHistoryService<TDocument>.Delete(string id)
+        {
+            return _historyService.Delete(id);
+        }
 
         public TModel GetHistoryValue<TModel>(string historyId) where TModel : class
         {

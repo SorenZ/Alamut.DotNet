@@ -19,7 +19,7 @@ namespace Alamut.Data.Service
         /// <typeparam name="TModel"></typeparam>
         /// <param name="model"></param>
         /// <returns></returns>
-        //ServiceResult<string> Create<TModel>(TModel model);
+        ServiceResult<string> Create<TModel>(TModel model);
 
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Alamut.Data.Service
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        //ServiceResult Update<TModel>(string id, TModel model);
+        ServiceResult Update<TModel>(string id, TModel model);
 
         /// <summary>
         /// delete item by Id
@@ -41,7 +41,7 @@ namespace Alamut.Data.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //ServiceResult Delete(string id);
+        ServiceResult Delete(string id);
 
         /// <summary>
         /// get typed history value by id
