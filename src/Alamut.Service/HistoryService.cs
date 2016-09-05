@@ -9,34 +9,26 @@ using AutoMapper;
 
 namespace Alamut.Service
 {
-    public class HistoryService<TDocument> :
-        IHistoryService<TDocument> 
+    public class HistoryService<TDocument> : CrudService<TDocument>,
+    IHistoryService<TDocument> 
         where TDocument : IEntity
     {
-        private readonly ICrudService<TDocument> _crudService;
         private readonly UserResolverService _userResolverService;
         private readonly IHistoryRepository _historyRepository;
 
-        public HistoryService(IHistoryRepository historyRepository,
-            ICrudService<TDocument> crudService,
-            UserResolverService userResolverService)
+        public HistoryService(IRepository<TDocument> repository,
+            IHistoryRepository historyRepository,
+            IMapper mapper,
+            UserResolverService userResolverService) 
+            : base(repository, mapper)
         {
-            _crudService = crudService;
             _userResolverService = userResolverService;
             _historyRepository = historyRepository;
         }
 
-        public HistoryService(IHistoryRepository historyRepository,
-            IRepository<TDocument> repository,
-            IMapper mapper)
+        public override ServiceResult<string> Create<TModel>(TModel model)
         {
-            _crudService = new CrudService<TDocument>(repository, mapper);
-            _historyRepository = historyRepository;
-        }
-
-        public ServiceResult<string> Create<TModel>(TModel model)
-        {
-            var result = _crudService.Create(model);
+            var result = base.Create(model);
 
             if (!result.Succeed) return result;
 
@@ -57,9 +49,9 @@ namespace Alamut.Service
             return result;
         }
 
-        public ServiceResult Update<TModel>(string id, TModel model)
+        public override ServiceResult Update<TModel>(string id, TModel model)
         {
-            var result = _crudService.Update(id, model);
+            var result = base.Update(id, model);
 
             if (!result.Succeed) return result;
 
@@ -80,13 +72,13 @@ namespace Alamut.Service
             return result;
         }
 
-        public virtual ServiceResult Delete(string id)
+        public override ServiceResult Delete(string id)
         {
-            var result = _crudService.Delete(id);
+            var result = base.Delete(id);
             if (!result.Succeed) return result;
             if (_historyRepository == null) return result;
 
-            var entity = _crudService.ReadOnly.Get(id);
+            var entity = base.ReadOnly.Get(id);
 
             var history = new BaseHistory
             {

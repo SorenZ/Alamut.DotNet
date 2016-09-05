@@ -28,11 +28,8 @@ namespace Alamut.Service
         {
             var entity = Mapper.Map<TDocument>(model);
 
-            if (entity is IDateEntity)
+            if (entity is IDateEntity) // TODO : should handle in Model creation time
                 (entity as IDateEntity).SetCreateDate();
-
-            //if (entity is ICodeEntity)
-            //    (entity as ICodeEntity).Code = UniqueKeyGenerator.GenerateByTime();
 
             try
             {
@@ -53,7 +50,7 @@ namespace Alamut.Service
             if (entity == null)
                 return ServiceResult.Error("There is no entity with Id : " + id, 404);
 
-            if (entity is IDateEntity)
+            if (entity is IDateEntity) // TODO : should handle in Model creation time
                 (entity as IDateEntity).SetUpdateDate();
 
             try
