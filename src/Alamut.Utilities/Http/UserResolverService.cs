@@ -20,16 +20,39 @@ namespace Alamut.Utilities.Http
             _context = context;
         }
 
+        /// <summary>
+        /// gets current user Username
+        /// </summary>
+        /// <returns></returns>
         public string GetUserName()
         {
             return _context.HttpContext.User?.Identity?.Name;
         }
 
+        /// <summary>
+        /// gets current user friendly name of current user
+        /// if it doesn't represented return userName
+        /// </summary>
+        /// <returns></returns>
+        public string GetGivenName()
+        {
+            return _context.HttpContext.User?.FindFirst(ClaimTypes.GivenName)?.Value ??
+                   GetUserName();
+        }
+
+        /// <summary>
+        /// gets current user UserId
+        /// </summary>
+        /// <returns></returns>
         public string GetUserId()
         {
             return _context.HttpContext.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         }
 
+        /// <summary>
+        /// gets current user Ip Address
+        /// </summary>
+        /// <returns></returns>
         public string GetUserIpAddress()
         {
             return _context.HttpContext.Features.Get<IHttpConnectionFeature>()?
