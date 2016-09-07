@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Alamut.Utilities.Localization
@@ -28,7 +29,15 @@ namespace Alamut.Utilities.Localization
         /// get current languase 
         /// Two ISO letter
         /// </summary>
-        string CurrenttLanguage { set; get; }
+        //[Obsolete("use SetCurrentLanguage()")]
+        string CurrenttLanguage { get; }
+
+        /// <summary>
+        /// set the current language for current user with specified method.
+        /// </summary>
+        /// <param name="isoLanguage">two character language</param>
+        /// <returns></returns>
+        void SetCurrentLanguage(string isoLanguage);
 
         /// <summary>
         /// get default language title

@@ -21,5 +21,13 @@ namespace Alamut.Utilities.Localization
                 ? source.Where(q => q.Lang == service.CurrenttLanguage)
                 : source;
         }
+
+        public static IQueryable<T> FilterByLanguage<T>(this IQueryable<T> source, string language)
+            where T : IMultiLanguageEnity
+        {
+            return language != null
+                ? source.Where(q => q.Lang == language)
+                : source;
+        }
     }
 }

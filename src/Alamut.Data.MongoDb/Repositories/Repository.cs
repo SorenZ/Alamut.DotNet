@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using Alamut.Data.Entity;
+using Alamut.Data.Paging;
 using Alamut.Data.Repository;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -12,10 +13,12 @@ namespace Alamut.Data.MongoDb.Repositories
 {
     public class Repository<TDocument> : QueryRepository<TDocument>,
         IRepository<TDocument> 
-        where TDocument : IEntity
+        where TDocument : class, IEntity
     {
         public Repository(IMongoDatabase database) : base(database)
-        { }
+        {
+        }
+
         public virtual void Create(TDocument entity)
         {
             Collection.InsertOne(entity);

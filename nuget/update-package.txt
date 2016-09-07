@@ -1,0 +1,5 @@
+update-package Alamut.Data
+update-package Alamut.Helpers
+update-package Alamut.Utilities
+update-package Alamut.Data.MongoDb
+update-package Alamut.Service

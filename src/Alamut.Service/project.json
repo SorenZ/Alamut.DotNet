@@ -1,11 +1,11 @@
 ﻿{
-  "version": "2.0.3",
+  "version": "2.0.4",
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "AutoMapper": "5.1.1",
-    "Alamut.Data": "2.0.2",
-    "Alamut.Utilities": "2.0.2"
+    "Alamut.Data": "*",
+    "Alamut.Utilities": "*"
       
 
   },

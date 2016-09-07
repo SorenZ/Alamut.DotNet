@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{A5252323
 	ProjectSection(SolutionItems) = preProject
 		nuget\alamut-pack.bat = nuget\alamut-pack.bat
 		nuget\alamut-publish.bat = nuget\alamut-publish.bat
+		nuget\update-package.txt = nuget\update-package.txt
 	EndProjectSection
 EndProject
 Global
