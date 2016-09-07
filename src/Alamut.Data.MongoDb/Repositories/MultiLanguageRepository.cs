@@ -38,35 +38,37 @@ namespace Alamut.Data.MongoDb.Repositories
             base.Create(entity);
         }
 
-        public override TDocument Get(Expression<Func<TDocument, bool>> predicate) => _localizationService.IsMulitLanguage
-            ? base.Get(predicate.AndAlso(q => q.Lang == _localizationService.CurrenttLanguage))
-            : base.Get(predicate );
+        public override TDocument Get(Expression<Func<TDocument, bool>> predicate)
+            => this.Queryable.FirstOrDefault(predicate);
 
-        public override TResult Get<TResult>(Expression<Func<TDocument, bool>> predicate, 
-            Expression<Func<TDocument, TResult>> projection) => _localizationService.IsMulitLanguage 
-            ? base.Get(predicate.AndAlso(q => q.Lang == _localizationService.CurrenttLanguage), projection)
-            : base.Get(predicate, projection);
 
-        public override List<TDocument> GetAll()
-        {
-            throw new NotImplementedException("this method not implemented in multilinguage repository.");
-        }
+        public override TResult Get<TResult>(Expression<Func<TDocument, bool>> predicate,
+            Expression<Func<TDocument, TResult>> projection)
+            => this.Queryable.Where(predicate).Select(projection).FirstOrDefault();
+
+        public override List<TDocument> GetAll() 
+            => this.Queryable.ToList();
+
 
         public override List<TResult> GetAll<TResult>(Expression<Func<TDocument, TResult>> projection)
-        {
-            throw new NotImplementedException("this method not implemented in multilinguage repository.");
-        }
+            => this.Queryable.Select(projection).ToList();
+        //{
+        //    throw new NotImplementedException("this method not implemented in multilinguage repository.");
+        //}
 
         public override List<TDocument> GetMany(Expression<Func<TDocument, bool>> predicate)
-        {
-            throw new NotImplementedException("this method not implemented in multilinguage repository.");
-        }
+            => this.Queryable.Where(predicate).ToList();
+        //{
+        //    throw new NotImplementedException("this method not implemented in multilinguage repository.");
+        //}
 
-        public override List<TResult> GetMany<TResult>(Expression<Func<TDocument, bool>> predicate, Expression<Func<TDocument, TResult>> projection)
-        {
-            throw new NotImplementedException("this method not implemented in multilinguage repository.");
-        }
-        
+        public override List<TResult> GetMany<TResult>(Expression<Func<TDocument, bool>> predicate,
+            Expression<Func<TDocument, TResult>> projection)
+            => this.Queryable.Where(predicate).Select(projection).ToList();
+        //{
+        //    throw new NotImplementedException("this method not implemented in multilinguage repository.");
+        //}
+
     }
 
 
