@@ -54,7 +54,7 @@ namespace Alamut.Utilities.Localization
         
 
         /// <summary>
-        /// determine wether system support multi language or not.
+        /// determine wether system support multi-lingual feature or not.
         /// </summary>
         /// <remarks>is based on configuraion if provided otherwise return false</remarks>
         bool IsMulitLanguage { get; }
