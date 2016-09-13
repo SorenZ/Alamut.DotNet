@@ -22,7 +22,7 @@ namespace Alamut.Data.MongoDb.Repositories
 
         public MultiLanguageRepository(IMongoDatabase database, ILocalizationService localizationService) : base(database)
         {
-            _localizationService = localizationService;
+            this._localizationService = localizationService;
         }
 
         public override IQueryable<TDocument> Queryable => _localizationService.IsMulitLanguage
@@ -32,7 +32,7 @@ namespace Alamut.Data.MongoDb.Repositories
 
         public override void Create(TDocument entity)
         {
-            if (_localizationService != null && _localizationService.IsMulitLanguage)
+            if (_localizationService.IsMulitLanguage)
                 entity.Lang = _localizationService.CurrenttLanguage;
 
             base.Create(entity);
@@ -49,36 +49,15 @@ namespace Alamut.Data.MongoDb.Repositories
         public override List<TDocument> GetAll() 
             => this.Queryable.ToList();
 
-
         public override List<TResult> GetAll<TResult>(Expression<Func<TDocument, TResult>> projection)
             => this.Queryable.Select(projection).ToList();
-        //{
-        //    throw new NotImplementedException("this method not implemented in multilinguage repository.");
-        //}
 
         public override List<TDocument> GetMany(Expression<Func<TDocument, bool>> predicate)
             => this.Queryable.Where(predicate).ToList();
-        //{
-        //    throw new NotImplementedException("this method not implemented in multilinguage repository.");
-        //}
 
         public override List<TResult> GetMany<TResult>(Expression<Func<TDocument, bool>> predicate,
             Expression<Func<TDocument, TResult>> projection)
             => this.Queryable.Where(predicate).Select(projection).ToList();
-        //{
-        //    throw new NotImplementedException("this method not implemented in multilinguage repository.");
-        //}
 
-    }
-
-
-    public static class languageExt
-    {
-        public static Expression<TDelegate> AndAlso<TDelegate>(this Expression<TDelegate> left,
-            Expression<TDelegate> right)
-        {
-            // NOTICE: Combining BODIES:
-            return Expression.Lambda<TDelegate>(Expression.AndAlso(left.Body, right.Body), left.Parameters);
-        }
     }
 }
