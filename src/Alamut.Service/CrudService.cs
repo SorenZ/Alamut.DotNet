@@ -84,16 +84,7 @@ namespace Alamut.Service
             if (id == null)
                 return ServiceResult.Error("Id could not be null");
 
-            try
-            {
-                base.Repository.Delete(id);
-            }
-            catch (Exception ex)
-            {
-                return ServiceResult.Exception(ex);
-            }
-
-            return ServiceResult.Okay("Item successfully deleted");
+            return base.Repository.Delete(id);
         }
 
         public virtual TResult Get<TResult>(string id)

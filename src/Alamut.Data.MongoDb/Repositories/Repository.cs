@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using Alamut.Data.Entity;
 using Alamut.Data.Paging;
 using Alamut.Data.Repository;
+using Alamut.Data.Structure;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -104,12 +105,24 @@ namespace Alamut.Data.MongoDb.Repositories
             Collection.UpdateOne(filter, update);
         }
 
-        public virtual void Delete(string id)
+        public virtual ServiceResult Delete(string id)
         {
             var filter = Builders<TDocument>.Filter
                 .Eq(m => m.Id, id);
 
-            Collection.DeleteOne(filter);
+            try
+            {
+                var result = Collection.DeleteOne(filter);
+
+                return result.IsAcknowledged
+                    ? ServiceResult.Okay($"{result.DeletedCount} item(s) successfully deleted.")
+                    : ServiceResult.Okay("item(s) successfully deleted.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
+            
         }
 
         public virtual void DeleteMany(Expression<Func<TDocument, bool>> predicate)
@@ -117,10 +130,10 @@ namespace Alamut.Data.MongoDb.Repositories
             Collection.DeleteMany(predicate);
         }
 
-        public virtual void SetDeleted(string id)
-        {
-            Collection.UpdateOne(q => q.Id == id,
-                new BsonDocument("$set", new BsonDocument(EntitySsot.IsDeleted, true)));
-        }
+        //public virtual void SetDeleted(string id)
+        //{
+        //    Collection.UpdateOne(q => q.Id == id,
+        //        new BsonDocument("$set", new BsonDocument(EntitySsot.IsDeleted, true)));
+        //}
     }
 }

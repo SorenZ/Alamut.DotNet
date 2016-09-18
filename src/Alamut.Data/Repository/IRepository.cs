@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Alamut.Data.Entity;
+using Alamut.Data.Structure;
 
 namespace Alamut.Data.Repository
 {
@@ -86,12 +87,12 @@ namespace Alamut.Data.Repository
         /// <param name="memberExpression"></param>
         /// <param name="value"></param>
         void RemoveFromList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value);
-        
+
         /// <summary>
         /// Deletes an item by id.
         /// </summary>
         /// <param name="id"></param>
-        void Delete(string id);
+        ServiceResult Delete(string id);
 
         /// <summary>
         /// Deletes multiple documents.
@@ -103,6 +104,6 @@ namespace Alamut.Data.Repository
         /// set is deleted to true by id
         /// </summary>
         /// <param name="id"></param>
-        void SetDeleted(string id);
+        //void SetDeleted(string id);
     }
 }

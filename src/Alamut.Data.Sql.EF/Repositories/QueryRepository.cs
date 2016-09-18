@@ -17,14 +17,14 @@ namespace Alamut.Data.Sql.EF.Repositories
     public class QueryRepository<TEntity> : IQueryRepository<TEntity>
         where TEntity : class, IEntity, new()
     {
-        private readonly DbContext _context;
+        protected readonly DbContext Context;
 
         public QueryRepository(DbContext context)
         {
-            _context = context;
+            Context = context;
         }
 
-        protected DbSet<TEntity> DbSet => _context.Set<TEntity>();
+        protected DbSet<TEntity> DbSet => Context.Set<TEntity>();
 
         public virtual IQueryable<TEntity> Queryable => DbSet.AsQueryable();
 
