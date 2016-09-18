@@ -98,7 +98,7 @@ namespace Alamut.Data.Repository
         /// Deletes multiple documents.
         /// </summary>
         /// <param name="predicate">represent expression to filter delete</param>
-        void DeleteMany(Expression<Func<TDocument, bool>> predicate);
+        ServiceResult DeleteMany(Expression<Func<TDocument, bool>> predicate);
         
         /// <summary>
         /// set is deleted to true by id

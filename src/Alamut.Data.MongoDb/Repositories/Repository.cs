@@ -125,9 +125,21 @@ namespace Alamut.Data.MongoDb.Repositories
             
         }
 
-        public virtual void DeleteMany(Expression<Func<TDocument, bool>> predicate)
+        public virtual ServiceResult DeleteMany(Expression<Func<TDocument, bool>> predicate)
         {
-            Collection.DeleteMany(predicate);
+            try
+            {
+                var result = Collection.DeleteMany(predicate);
+
+                return result.IsAcknowledged
+                    ? ServiceResult.Okay($"{result.DeletedCount} item(s) successfully deleted.")
+                    : ServiceResult.Okay("item(s) successfully deleted.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
+            
         }
 
         //public virtual void SetDeleted(string id)
