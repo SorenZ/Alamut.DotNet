@@ -12,38 +12,6 @@ namespace Alamut.Data.Service
         where TDocument : IEntity
     {
         /// <summary>
-        /// create an item by mapping model into entity and 
-        /// add it in database.
-        /// - create a history entiry for it.
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        //ServiceResult<string> Create<TModel>(TModel model);
-
-
-        /// <summary>
-        /// update an item by id
-        /// mapping model into entity (use new properties in model & old properties in entity)
-        /// update database
-        /// - create a history entiry for it.
-        /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="id"></param>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        //ServiceResult Update<TModel>(string id, TModel model);
-
-        /// <summary>
-        /// delete item by Id
-        /// - create a history entiry for it.
-        /// snapshot the entire document in order to save it for reverse in future
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        //ServiceResult Delete(string id);
-
-        /// <summary>
         /// get typed history value by id
         /// convert ModelValue to requested type
         /// </summary>

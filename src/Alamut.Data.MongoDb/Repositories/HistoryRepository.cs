@@ -5,6 +5,10 @@ using MongoDB.Driver;
 
 namespace Alamut.Data.MongoDb.Repositories
 {
+    /// <summary>
+    /// generic implementation of IHistoryRepository
+    /// </summary>
+    /// <typeparam name="THistoryDocument"></typeparam>
     public class HistoryRepository<THistoryDocument> : IHistoryRepository<THistoryDocument>
         where THistoryDocument : IHistoryEntity
     {
@@ -15,12 +19,12 @@ namespace Alamut.Data.MongoDb.Repositories
             Collection = database.GetCollection<THistoryDocument>(typeof(THistoryDocument).Name);
         }
 
-        public void Push(THistoryDocument entity) 
+        public virtual void Push(THistoryDocument entity) 
         {
             Collection.InsertOne(entity);
         }
 
-        public TModel Pull<TModel>(string id) where TModel : class
+        public virtual TModel Pull<TModel>(string id) where TModel : class
         {
             var entity = Collection.Find(q => q.Id == id)
                 .FirstOrDefault();
@@ -33,14 +37,14 @@ namespace Alamut.Data.MongoDb.Repositories
             return Newtonsoft.Json.JsonConvert.DeserializeObject<TModel>(json);
         }
 
-        public dynamic Pull(string historyId)
+        public virtual dynamic Pull(string historyId)
         {
             return Collection.Find(q => q.Id == historyId)
                 .Project(s => s.ModelValue)
                 .FirstOrDefault();
         }
 
-        public List<THistoryDocument> GetMany(string entityName, string modelName, string entityId)
+        public virtual List<THistoryDocument> GetMany(string entityName, string modelName, string entityId)
         {
             return Collection.Find(q => q.EntityName == entityName 
                 && q.ModelName == modelName
@@ -48,7 +52,7 @@ namespace Alamut.Data.MongoDb.Repositories
                 .ToList();
         }
 
-        public List<THistoryDocument> GetMany(string entityName, string entityId)
+        public virtual List<THistoryDocument> GetMany(string entityName, string entityId)
         {
             return Collection.Find(q => q.EntityName == entityName
                 && q.EntityId == entityId)
@@ -56,7 +60,9 @@ namespace Alamut.Data.MongoDb.Repositories
         }
     }
 
-
+    /// <summary>
+    /// default implementation of IHistoryRepository with BaseHistory model
+    /// </summary>
     public class HistoryRepository : IHistoryRepository
     {
         protected readonly IMongoCollection<BaseHistory> Collection;

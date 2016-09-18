@@ -15,15 +15,20 @@ namespace Alamut.Data.Repository
         /// <summary>
         /// get an item(entity value) from history collection and cast it to TModel
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TModel">type of expected return value</typeparam>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>typed object based on type parameter</returns>
         TModel Pull<TModel>(string id) where TModel : class;
 
+        /// <summary>
+        /// get an item value from history collection by id
+        /// </summary>
+        /// <param name="historyId"></param>
+        /// <returns>untyped object</returns>
         dynamic Pull(string historyId);
 
         /// <summary>
-        /// get a list of item from history collection based on criteria
+        /// get a list of item from history collection based on criterias
         /// </summary>
         /// <param name="entityName">the name of entity</param>
         /// <param name="modelName">the name of model</param>

@@ -3,7 +3,7 @@
 namespace Alamut.Data.Entity
 {
     /// <summary>
-    /// provide a contract of requirement for history
+    /// provide a contract of requirements for history
     /// </summary>
     public interface IHistoryEntity : 
         IEntity,
@@ -13,7 +13,6 @@ namespace Alamut.Data.Entity
         string UserIp { get; set; }
         DateTime CreateDate { get; set; }
         string Action { get; set; }
-        //string ActionDescription { get; set; }
         string EntityId { get; set; }
         string EntityName { get; set; }
         string ModelName { get; set; }

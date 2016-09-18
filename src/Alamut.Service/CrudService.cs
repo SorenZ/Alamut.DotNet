@@ -27,9 +27,9 @@ namespace Alamut.Service
         public virtual ServiceResult<string> Create<TModel>(TModel model)
         {
             var entity = Mapper.Map<TDocument>(model);
-
-            if (entity is IDateEntity) // TODO : should handle in Model creation time
-                (entity as IDateEntity).SetCreateDate();
+            
+            //if (entity is IDateEntity) 
+            //    (entity as IDateEntity).SetCreateDate();
 
             try
             {
