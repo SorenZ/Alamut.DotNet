@@ -26,7 +26,8 @@ namespace Alamut.Data.Sql.EF.Repositories
 
         protected DbSet<TEntity> DbSet => Context.Set<TEntity>();
 
-        public virtual IQueryable<TEntity> Queryable => DbSet.AsQueryable();
+        
+        public virtual IQueryable<TEntity> Queryable => DbSet.AsNoTracking();
 
         public virtual TEntity Get(string id) =>
             DbSet.FirstOrDefault(q => q.Id == id);

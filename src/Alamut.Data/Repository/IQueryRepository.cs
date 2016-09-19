@@ -18,7 +18,8 @@ namespace Alamut.Data.Repository
     public interface IQueryRepository<TDocument> where TDocument : IEntity
     {
         /// <summary>
-        /// Creates a queryable source of documents
+        /// provide a queryable source of elements
+        /// be carefur, the Queryable not been tracked in sql repositories
         /// </summary>
         IQueryable<TDocument> Queryable { get; }
 

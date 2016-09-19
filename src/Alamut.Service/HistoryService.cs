@@ -31,7 +31,6 @@ namespace Alamut.Service
             var result = base.Create(model);
 
             if (!result.Succeed) return result;
-            //if (_historyRepository == null) return result;
 
             var history = new BaseHistory
             {

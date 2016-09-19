@@ -17,25 +17,29 @@ namespace Alamut.Data.Repository
         where TDocument : IEntity
     {
         /// <summary>
-        /// create an item
+        /// create an item 
+        /// and commit into database.
         /// </summary>
         /// <param name="entity"></param>
-        void Create(TDocument entity);
+        ServiceResult<string> Create(TDocument entity);
 
         /// <summary>
         /// add list of item into database
+        /// and commit into database.
         /// </summary>
         /// <param name="list"></param>
-        void AddRange(IEnumerable<TDocument> list);
+        ServiceResult AddRange(IEnumerable<TDocument> list);
 
         /// <summary>
         /// update item total value
+        /// and commit into database.
         /// </summary>
         /// <param name="entity"></param>
-        void Update(TDocument entity);
+        ServiceResult Update(TDocument entity);
 
         /// <summary>
         /// update an item (one field) by expression member selector by id
+        /// and commit into database.
         /// </summary>
         /// <typeparam name="TField"></typeparam>
         /// <param name="id"></param>
@@ -44,12 +48,13 @@ namespace Alamut.Data.Repository
         /// <remarks>
         /// Even if multiple documents match the filter, only one will be updated because we used UpdateOne
         /// </remarks>
-        void UpdateOne<TField>(string id, 
+        ServiceResult UpdateOne<TField>(string id, 
             Expression<Func<TDocument, TField>> memberExpression, 
             TField value);
 
         /// <summary>
         /// update an item (one field) by expression member selector (select item by predicate)
+        /// and commit into database.
         /// </summary>
         /// <typeparam name="TFilter"></typeparam>
         /// <typeparam name="TField"></typeparam>
@@ -59,7 +64,7 @@ namespace Alamut.Data.Repository
         /// <remarks>
         /// Even if multiple documents match the filter, only one will be updated because we used UpdateOne
         /// </remarks>
-        void UpdateOne<TFilter, TField>(Expression<Func<TDocument, bool>> filterExpression, 
+        ServiceResult UpdateOne<TFilter, TField>(Expression<Func<TDocument, bool>> filterExpression, 
             Expression<Func<TDocument, TField>> memberExpression, TField value);
 
         /// <summary>
@@ -67,9 +72,8 @@ namespace Alamut.Data.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <param name="fieldset"></param>
-        [Obsolete("it's not recommended")]
-        void GenericUpdate(string id, Dictionary<string, dynamic> fieldset);
-        
+        ServiceResult GenericUpdate(string id, Dictionary<string, dynamic> fieldset);
+
         /// <summary>
         /// add an item to a list (if not exist)
         /// </summary>
@@ -77,7 +81,7 @@ namespace Alamut.Data.Repository
         /// <param name="id"></param>
         /// <param name="memberExpression"></param>
         /// <param name="value"></param>
-        void AddToList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value);
+        ServiceResult AddToList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value);
 
         /// <summary>
         /// remove an item from a list (all item if same)
@@ -86,7 +90,7 @@ namespace Alamut.Data.Repository
         /// <param name="id"></param>
         /// <param name="memberExpression"></param>
         /// <param name="value"></param>
-        void RemoveFromList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value);
+        ServiceResult RemoveFromList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value);
 
         /// <summary>
         /// Deletes an item by id.
@@ -99,11 +103,5 @@ namespace Alamut.Data.Repository
         /// </summary>
         /// <param name="predicate">represent expression to filter delete</param>
         ServiceResult DeleteMany(Expression<Func<TDocument, bool>> predicate);
-        
-        /// <summary>
-        /// set is deleted to true by id
-        /// </summary>
-        /// <param name="id"></param>
-        //void SetDeleted(string id);
     }
 }

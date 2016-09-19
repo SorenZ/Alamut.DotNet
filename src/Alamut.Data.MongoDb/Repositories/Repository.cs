@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq.Expressions;
 using Alamut.Data.Entity;
-using Alamut.Data.Paging;
 using Alamut.Data.Repository;
 using Alamut.Data.Structure;
 using MongoDB.Bson;
@@ -17,53 +15,98 @@ namespace Alamut.Data.MongoDb.Repositories
         where TDocument : class, IEntity
     {
         public Repository(IMongoDatabase database) : base(database)
+        { }
+
+        public virtual ServiceResult<string> Create(TDocument entity)
         {
+            try
+            {
+                Collection.InsertOne(entity);
+                return ServiceResult<string>.Okay(entity.Id, $"item successfully created.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<string>.Exception(ex);
+            }
         }
 
-        public virtual void Create(TDocument entity)
+        public virtual ServiceResult AddRange(IEnumerable<TDocument> list)
         {
-            Collection.InsertOne(entity);
+            try
+            {
+                Collection.InsertMany(list);
+                return ServiceResult.Okay($"items successfully created.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
         }
 
-        public virtual void AddRange(IEnumerable<TDocument> list)
-        {
-            Collection.InsertMany(list);
-        }
-
-        public virtual void Update(TDocument entity)
+        public virtual ServiceResult Update(TDocument entity)
         {
             var filter = Builders<TDocument>.Filter
                 .Eq(m => m.Id, entity.Id);
 
-            Collection.ReplaceOne(filter, entity);
+            try
+            {
+                var result = Collection.ReplaceOne(filter, entity);
+
+                return result.IsAcknowledged && result.IsModifiedCountAvailable
+                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                    : ServiceResult.Okay("item successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
         }
 
-        public virtual void UpdateOne<TField>(string id, 
-            Expression<Func<TDocument, TField>> memberExpression, TField value)
+        public virtual ServiceResult UpdateOne<TField>(string id, Expression<Func<TDocument, TField>> memberExpression, TField value)
         {
             var filter = Builders<TDocument>.Filter
                 .Eq(m => m.Id, id);
 
             var update = Builders<TDocument>.Update
                 .Set(memberExpression, value);
-                
 
-            var result = Collection.UpdateOne(filter, update);
+            try
+            {
+                var result = Collection.UpdateOne(filter, update);
 
-            Debug.WriteLine(result);
+                return result.IsAcknowledged && result.IsModifiedCountAvailable
+                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                    : ServiceResult.Okay("item successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
+
 
         }
 
-        public virtual void UpdateOne<TFilter, TField>(Expression<Func<TDocument, bool>> predicate, 
-            Expression<Func<TDocument, TField>> memberExpression, TField value)
+        public virtual ServiceResult UpdateOne<TFilter, TField>(Expression<Func<TDocument, bool>> predicate, Expression<Func<TDocument, TField>> memberExpression, TField value)
         {
             var update = Builders<TDocument>.Update
                 .Set(memberExpression, value);
 
-            Collection.UpdateOne(predicate, update);
+            try
+            {
+                var result = Collection.UpdateOne(predicate, update);
+
+                return result.IsAcknowledged && result.IsModifiedCountAvailable
+                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                    : ServiceResult.Okay("item successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
         }
 
-        public virtual void GenericUpdate(string id, Dictionary<string, dynamic> fieldset)
+        [Obsolete("it's not recommended")]
+        public virtual ServiceResult GenericUpdate(string id, Dictionary<string, dynamic> fieldset)
         {
             var filter = Builders<TDocument>.Filter
                 .Eq(m => m.Id, id);
@@ -78,11 +121,22 @@ namespace Alamut.Data.MongoDb.Repositories
                     updateList.Add(Builders<TDocument>.Update.Set(field.Key, (BsonValue) field.Value ?? BsonNull.Value));
             }
 
-            Collection.UpdateOne(filter, Builders<TDocument>.Update.Combine(updateList));
+            
+            try
+            {
+                var result = Collection.UpdateOne(filter, Builders<TDocument>.Update.Combine(updateList));
+
+                return result.IsAcknowledged && result.IsModifiedCountAvailable
+                    ? ServiceResult.Okay($"{result.ModifiedCount} item(s) successfully updated.")
+                    : ServiceResult.Okay("item(s) successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
         }
 
-        public virtual void AddToList<TValue>(string id, 
-            Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value)
+        public virtual ServiceResult AddToList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value)
         {
             var filter = Builders<TDocument>.Filter
                 .Eq(m => m.Id, id);
@@ -90,11 +144,21 @@ namespace Alamut.Data.MongoDb.Repositories
             var update = Builders<TDocument>.Update
                 .AddToSet(memberExpression, value);
 
-            Collection.UpdateOne(filter, update);
+            try
+            {
+                var result = Collection.UpdateOne(filter, update);
+
+                return result.IsAcknowledged && result.IsModifiedCountAvailable
+                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                    : ServiceResult.Okay("item successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
         }
 
-        public virtual void RemoveFromList<TValue>(string id, 
-            Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value)
+        public virtual ServiceResult RemoveFromList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value)
         {
             var filter = Builders<TDocument>.Filter
                 .Eq(m => m.Id, id);
@@ -102,7 +166,18 @@ namespace Alamut.Data.MongoDb.Repositories
             var update = Builders<TDocument>.Update
                 .Pull(memberExpression, value);
 
-            Collection.UpdateOne(filter, update);
+            try
+            {
+                var result = Collection.UpdateOne(filter, update);
+
+                return result.IsAcknowledged && result.IsModifiedCountAvailable
+                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                    : ServiceResult.Okay("item successfully updated.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult.Exception(ex);
+            }
         }
 
         public virtual ServiceResult Delete(string id)
@@ -142,10 +217,5 @@ namespace Alamut.Data.MongoDb.Repositories
             
         }
 
-        //public virtual void SetDeleted(string id)
-        //{
-        //    Collection.UpdateOne(q => q.Id == id,
-        //        new BsonDocument("$set", new BsonDocument(EntitySsot.IsDeleted, true)));
-        //}
     }
 }

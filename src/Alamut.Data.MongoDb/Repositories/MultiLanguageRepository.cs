@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Alamut.Data.Entity;
 using Alamut.Data.Repository;
+using Alamut.Data.Structure;
 using Alamut.Helpers.Localization;
 using Alamut.Utilities.Localization;
 using MongoDB.Driver;
@@ -30,7 +31,7 @@ namespace Alamut.Data.MongoDb.Repositories
             : Collection.AsQueryable();
 
 
-        public override void Create(TDocument entity)
+        public override ServiceResult<string> Create(TDocument entity)
         {
             if (_localizationService.IsMulitLanguage)
                 entity.Lang = _localizationService.CurrenttLanguage;
