@@ -10,7 +10,10 @@ using AutoMapper;
 
 namespace Alamut.Service
 {
-    public class FullService<TDocument> : IFullService<TDocument>
+    public class FullService<TDocument> : //IFullService<TDocument>
+        IService<TDocument>,
+        ICrudService<TDocument>,
+        IHistoryService<TDocument> 
         where TDocument : IEntity
     {
         private readonly CrudService<TDocument> _crudService;
