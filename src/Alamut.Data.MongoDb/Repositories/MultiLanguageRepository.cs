@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 using Alamut.Data.Entity;
 using Alamut.Data.Repository;
 using Alamut.Data.Structure;
-using Alamut.Helpers.Localization;
 using Alamut.Utilities.Localization;
 using MongoDB.Driver;
 
@@ -36,7 +35,7 @@ namespace Alamut.Data.MongoDb.Repositories
             if (_localizationService.IsMulitLanguage)
                 entity.Lang = _localizationService.CurrenttLanguage;
 
-            base.Create(entity);
+            return base.Create(entity);
         }
 
         public override TDocument Get(Expression<Func<TDocument, bool>> predicate)

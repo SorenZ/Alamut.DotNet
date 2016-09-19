@@ -14,23 +14,11 @@ namespace Alamut.Service
     {
         public Service(IRepository<TDocument> repository)
         {
-            InternalRepository = repository;
+            Repository = repository;
         }
 
-        /// <summary>
-        /// if consumer needs repository s/he must use CrudService
-        /// </summary>
-        internal readonly IRepository<TDocument> InternalRepository; // TODO : should be private
+        protected IRepository<TDocument> Repository { get; }
 
-        protected IRepository<TDocument> Repository
-        {
-            get { return InternalRepository; }
-        }
-
-        public IQueryRepository<TDocument> ReadOnly
-        {
-            get { return this.InternalRepository; }
-        }
-        
+        public IQueryRepository<TDocument> ReadOnly => this.Repository;
     }
 }

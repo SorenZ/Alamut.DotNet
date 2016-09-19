@@ -6,7 +6,6 @@ using Alamut.Data.Entity;
 using Alamut.Data.Repository;
 using Alamut.Data.Service;
 using Alamut.Data.Structure;
-using Alamut.Service.Helpers;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 
@@ -28,16 +27,18 @@ namespace Alamut.Service
         {
             var entity = Mapper.Map<TDocument>(model);
             
-            try
-            {
-                base.Repository.Create(entity);
-            }
-            catch (Exception ex)
-            {
-                return ServiceResult<string>.Exception(ex);
-            }
+            return base.Repository.Create(entity);
 
-            return ServiceResult<string>.Okay(entity.Id);
+            //try
+            //{
+                
+            //}
+            //catch (Exception ex)
+            //{
+            //    return ServiceResult<string>.Exception(ex);
+            //}
+
+            //return ServiceResult<string>.Okay(entity.Id);
         }
 
         public virtual ServiceResult Update<TModel>(string id, TModel model)
@@ -47,33 +48,35 @@ namespace Alamut.Service
             if (entity == null)
                 return ServiceResult.Error("There is no entity with Id : " + id, 404);
 
-            //if (entity is IDateEntity) // TODO : should handle in Model creation time
-            //    (entity as IDateEntity).SetUpdateDate();
+            return base.Repository.Update(Mapper.Map(model, entity));
 
-            try
-            {
-                base.Repository.Update(Mapper.Map(model, entity));
-            }
-            catch (Exception ex)
-            {
-                return ServiceResult<string>.Exception(ex);
-            }
+            //try
+            //{
+            //    base.Repository.Update(Mapper.Map(model, entity));
+            //}
+            //catch (Exception ex)
+            //{
+            //    return ServiceResult<string>.Exception(ex);
+            //}
 
-            return ServiceResult.Okay();
+            //return ServiceResult.Okay();
         }
 
         public ServiceResult UpdateOne<TField>(string id, Expression<Func<TDocument, TField>> memberExpression, TField value)
         {
-            try
-            {
-                base.Repository.UpdateOne(id, memberExpression,value);
-            }
-            catch (Exception ex)
-            {
-                return ServiceResult<string>.Exception(ex);
-            }
+            return base.Repository.UpdateOne(id, memberExpression,value);
+            
 
-            return ServiceResult.Okay();
+            //try
+            //{
+            //    base.Repository.UpdateOne(id, memberExpression,value);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return ServiceResult<string>.Exception(ex);
+            //}
+
+            //return ServiceResult.Okay();
         }
 
         public virtual ServiceResult Delete(string id)

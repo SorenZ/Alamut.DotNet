@@ -54,7 +54,6 @@ namespace Alamut.Service
             var result = base.Update(id, model);
 
             if (!result.Succeed) return result;
-            //if (_historyRepository == null) return result;
 
             var history = new BaseHistory
             {
@@ -75,11 +74,10 @@ namespace Alamut.Service
 
         public override ServiceResult Delete(string id)
         {
-            var result = base.Delete(id);
-            if (!result.Succeed) return result;
-            //if (_historyRepository == null) return result;
-
             var entity = base.ReadOnly.Get(id);
+            var result = base.Delete(id);
+
+            if (!result.Succeed) return result;
 
             var history = new BaseHistory
             {
@@ -99,27 +97,17 @@ namespace Alamut.Service
 
         }
 
-        public TModel GetHistoryValue<TModel>(string historyId) where TModel : class
-        {
-            //if (_historyRepository == null)
-            //    throw new NullReferenceException(nameof(_historyRepository));
+        public TModel GetHistoryValue<TModel>(string historyId)
+            where TModel : class =>
+                _historyRepository.Pull<TModel>(historyId);
 
-            return _historyRepository.Pull<TModel>(historyId);
-        }
 
-        public dynamic GetHistoryValue(string historyId)
-        {
-            //if (_historyRepository == null)
-            //    throw new NullReferenceException(nameof(_historyRepository));
+        public dynamic GetHistoryValue(string historyId) =>
+            _historyRepository.Pull(historyId);
 
-            return _historyRepository.Pull(historyId);
-        }
 
         public List<BaseHistory> GetHistories<TModel>(string entityId)
         {
-            //if (_historyRepository == null)
-            //    throw new NullReferenceException(nameof(_historyRepository));
-
             var entityName = typeof (TDocument).Name;
             var modelName = typeof (TModel).Name;
 
@@ -128,9 +116,6 @@ namespace Alamut.Service
 
         public List<BaseHistory> GetHistories(string entityId)
         {
-            //if (_historyRepository == null)
-            //    throw new NullReferenceException(nameof(_historyRepository));
-
             var entityName = typeof(TDocument).Name;
 
             return _historyRepository.GetMany(entityName, entityId);
