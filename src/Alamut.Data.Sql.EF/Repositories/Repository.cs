@@ -54,7 +54,6 @@ namespace Alamut.Data.Sql.EF.Repositories
 
             entry.State = EntityState.Modified;
 
-
             try
             {
                 var item = base.Context.SaveChanges();

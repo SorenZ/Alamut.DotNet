@@ -19,9 +19,7 @@ namespace Alamut.Data.MongoDb.BsonSerializer
         {
             var json = value == null
                 ? "{}"
-                : (value is JObject) 
-                    ? (value as JObject).ToString() 
-                    : Newtonsoft.Json.JsonConvert.SerializeObject(value);
+                : (value as JObject)?.ToString() ?? Newtonsoft.Json.JsonConvert.SerializeObject(value);
 
             var document = BsonDocument.Parse(json);
 
