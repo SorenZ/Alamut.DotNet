@@ -11,7 +11,7 @@ namespace Alamut.Utilities.Security
     {
         private const string Clist = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private static readonly char[] Clistarr = Clist.ToCharArray();
-
+        
         public static long Decode(string inputString)
         {
             long result = 0;

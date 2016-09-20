@@ -1,17 +1,14 @@
 ﻿{
-  "version": "2.0.9",
+  "version": "2.1.0",
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0",
-    "AutoMapper": "5.1.1",
+    "AutoMapper": "*",
     "Alamut.Data": "*",
     "Alamut.Utilities": "*"
-      
-
   },
 
   "frameworks": {
-    "net46": {
+    "net451": {
     }
   }
 }
