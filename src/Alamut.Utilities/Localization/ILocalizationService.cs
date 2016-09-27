@@ -26,10 +26,10 @@ namespace Alamut.Utilities.Localization
         IList<CultureInfo> GetSupportedCulture();
 
         /// <summary>
-        /// get current languase if multilanguage supported.
+        /// get current languase if multilanguage supported 
+        /// otherwise represent emptry string
         /// two ISO letter
         /// </summary>
-        //[Obsolete("use SetCurrentLanguage()")]
         string CurrentLanguage { get; }
 
         /// <summary>
