@@ -18,7 +18,7 @@ namespace Alamut.Utilities.Localization
             where T : IMultiLanguageEnity
         {
             return service != null && service.IsMulitLanguage
-                ? source.Where(q => q.Lang == service.CurrenttLanguage)
+                ? source.Where(q => q.Lang == service.CurrentLanguage)
                 : source;
         }
 

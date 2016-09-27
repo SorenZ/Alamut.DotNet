@@ -26,14 +26,14 @@ namespace Alamut.Data.MongoDb.Repositories
         }
 
         public override IQueryable<TDocument> Queryable => _localizationService.IsMulitLanguage
-            ? Collection.AsQueryable().FilterByLanguage(_localizationService.CurrenttLanguage)
+            ? Collection.AsQueryable().FilterByLanguage(_localizationService.CurrentLanguage)
             : Collection.AsQueryable();
 
 
         public override ServiceResult<string> Create(TDocument entity)
         {
-            if (_localizationService.IsMulitLanguage)
-                entity.Lang = _localizationService.CurrenttLanguage;
+            if (_localizationService.IsMulitLanguage && string.IsNullOrEmpty(entity.Lang))
+                entity.Lang = _localizationService.CurrentLanguage;
 
             return base.Create(entity);
         }

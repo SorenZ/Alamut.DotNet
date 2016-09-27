@@ -26,24 +26,17 @@ namespace Alamut.Utilities.Localization
         IList<CultureInfo> GetSupportedCulture();
 
         /// <summary>
-        /// get current languase 
-        /// Two ISO letter
+        /// get current languase if multilanguage supported.
+        /// two ISO letter
         /// </summary>
         //[Obsolete("use SetCurrentLanguage()")]
-        string CurrenttLanguage { get; }
-
-        /// <summary>
-        /// set the current language for current user with specified method.
-        /// </summary>
-        /// <param name="isoLanguage">two character language</param>
-        /// <returns></returns>
-        void SetCurrentLanguage(string isoLanguage);
+        string CurrentLanguage { get; }
 
         /// <summary>
         /// get default language title
         /// English, عربی, فارسی
         /// </summary>
-        string CurrenttLanguageTitle { get; }
+        string CurrentLanguageTitle { get; }
 
         /// <summary>
         /// get default language 
