@@ -15,12 +15,12 @@ namespace Alamut.Service
         ICrudService<TDocument>
         where TDocument : IEntity
     {
-        protected IMapper Mapper { get; private set; }
+        //protected IMapper Mapper { get; private set; }
 
-        public CrudService(IRepository<TDocument> repository, IMapper mapper)
+        public CrudService(IRepository<TDocument> repository)
             : base(repository)
         {
-            Mapper = mapper;
+            //Mapper = mapper;
         }
 
         public virtual ServiceResult<string> Create<TModel>(TModel model)
@@ -87,19 +87,19 @@ namespace Alamut.Service
             return base.Repository.Delete(id);
         }
 
-        public virtual TResult Get<TResult>(string id)
+        public virtual TResult Get<TResult>(string id) // // TODO : move to repository to get rid of multi-language queryable
         {
             return base.Repository.Queryable
                 .Where(q => q.Id == id)
-                .ProjectTo<TResult>(this.Mapper.ConfigurationProvider)
+                .ProjectTo<TResult>()
                 .FirstOrDefault();
         }
 
-        public List<TResult> GetMany<TResult>(IEnumerable<string> ids)
+        public List<TResult> GetMany<TResult>(IEnumerable<string> ids) // TODO : move to repository to get rid of multi-language queryable
         {
             return base.Repository.Queryable
                 .Where(q => ids.Contains(q.Id))
-                .ProjectTo<TResult>(this.Mapper.ConfigurationProvider)
+                .ProjectTo<TResult>()
                 .ToList();
         }
 
@@ -107,7 +107,7 @@ namespace Alamut.Service
         {
             return base.Repository.Queryable
                 .Where(predicate)
-                .ProjectTo<TResult>(this.Mapper.ConfigurationProvider)
+                .ProjectTo<TResult>()
                 .ToList();
         }
     }

@@ -6,6 +6,7 @@ using Alamut.Data.Entity;
 using Alamut.Data.Repository;
 using Alamut.Data.Structure;
 using Alamut.Utilities.Localization;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 namespace Alamut.Data.MongoDb.Repositories
@@ -18,22 +19,22 @@ namespace Alamut.Data.MongoDb.Repositories
         IRepository<TDocument>
         where TDocument : class, IEntity, IMultiLanguageEnity
     {
-        private readonly ILocalizationService _localizationService;
+        private readonly LocalizationConfig _localizationConfig;
 
-        public MultiLanguageRepository(IMongoDatabase database, ILocalizationService localizationService) : base(database)
+        public MultiLanguageRepository(IMongoDatabase database, IOptions<LocalizationConfig> options) : base(database)
         {
-            this._localizationService = localizationService;
+            _localizationConfig = options.Value;
         }
 
-        public override IQueryable<TDocument> Queryable => _localizationService.IsMulitLanguage
-            ? Collection.AsQueryable().FilterByLanguage(_localizationService.CurrentLanguage)
+        public override IQueryable<TDocument> Queryable => _localizationConfig.IsMultiLanguage
+            ? Collection.AsQueryable().FilterByLanguage(_localizationConfig.CurrentLanguage)
             : Collection.AsQueryable();
 
 
         public override ServiceResult<string> Create(TDocument entity)
         {
-            if (_localizationService.IsMulitLanguage && string.IsNullOrEmpty(entity.Lang))
-                entity.Lang = _localizationService.CurrentLanguage;
+            if (_localizationConfig.IsMultiLanguage && string.IsNullOrEmpty(entity.Lang))
+                entity.Lang = _localizationConfig.CurrentLanguage;
 
             return base.Create(entity);
         }

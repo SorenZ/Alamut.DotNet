@@ -18,9 +18,9 @@ namespace Alamut.Service
 
         public HistoryService(IRepository<TDocument> repository,
             IHistoryRepository historyRepository,
-            IMapper mapper,
+            //IMapper mapper,
             UserResolverService userResolverService) 
-            : base(repository, mapper)
+            : base(repository)
         {
             _userResolverService = userResolverService;
             _historyRepository = historyRepository;

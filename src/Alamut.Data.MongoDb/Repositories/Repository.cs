@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Alamut.Data.Entity;
 using Alamut.Data.Repository;
+using Alamut.Data.SSOT;
 using Alamut.Data.Structure;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -22,7 +23,7 @@ namespace Alamut.Data.MongoDb.Repositories
             try
             {
                 Collection.InsertOne(entity);
-                return ServiceResult<string>.Okay(entity.Id, $"item successfully created.");
+                return ServiceResult<string>.Okay(entity.Id, Messages.ItemCreated);
             }
             catch (Exception ex)
             {
@@ -35,7 +36,7 @@ namespace Alamut.Data.MongoDb.Repositories
             try
             {
                 Collection.InsertMany(list);
-                return ServiceResult.Okay($"items successfully created.");
+                return ServiceResult.Okay(Messages.ItemsCreated);
             }
             catch (Exception ex)
             {
@@ -54,9 +55,12 @@ namespace Alamut.Data.MongoDb.Repositories
             {
                 var result = Collection.ReplaceOne(filter, entity);
 
-                return result.IsAcknowledged && result.IsModifiedCountAvailable
-                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
-                    : ServiceResult.Okay("item successfully updated.");
+                return ServiceResult.Okay(Messages.ItemUpdated);
+
+                // TODO : use it in log system
+                //return result.IsAcknowledged && result.IsModifiedCountAvailable
+                //    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                //    : ServiceResult.Okay("item successfully updated.");
             }
             catch (Exception ex)
             {
@@ -76,15 +80,15 @@ namespace Alamut.Data.MongoDb.Repositories
             {
                 var result = Collection.UpdateOne(filter, update);
 
-                return result.IsAcknowledged && result.IsModifiedCountAvailable
-                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
-                    : ServiceResult.Okay("item successfully updated.");
+                return ServiceResult.Okay(Messages.ItemUpdated);
+                //return result.IsAcknowledged && result.IsModifiedCountAvailable
+                //    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                //    : ServiceResult.Okay("item successfully updated.");
             }
             catch (Exception ex)
             {
                 return ServiceResult.Exception(ex);
             }
-
 
         }
 
@@ -96,10 +100,11 @@ namespace Alamut.Data.MongoDb.Repositories
             try
             {
                 var result = Collection.UpdateOne(predicate, update);
+                return ServiceResult.Okay(Messages.ItemUpdated);
 
-                return result.IsAcknowledged && result.IsModifiedCountAvailable
-                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
-                    : ServiceResult.Okay("item successfully updated.");
+                //return result.IsAcknowledged && result.IsModifiedCountAvailable
+                //    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                //    : ServiceResult.Okay("item successfully updated.");
             }
             catch (Exception ex)
             {
@@ -127,10 +132,11 @@ namespace Alamut.Data.MongoDb.Repositories
             try
             {
                 var result = Collection.UpdateOne(filter, Builders<TDocument>.Update.Combine(updateList));
+                return ServiceResult.Okay(Messages.ItemUpdated);
 
-                return result.IsAcknowledged && result.IsModifiedCountAvailable
-                    ? ServiceResult.Okay($"{result.ModifiedCount} item(s) successfully updated.")
-                    : ServiceResult.Okay("item(s) successfully updated.");
+                //return result.IsAcknowledged && result.IsModifiedCountAvailable
+                //    ? ServiceResult.Okay($"{result.ModifiedCount} item(s) successfully updated.")
+                //    : ServiceResult.Okay("item(s) successfully updated.");
             }
             catch (Exception ex)
             {
@@ -149,10 +155,11 @@ namespace Alamut.Data.MongoDb.Repositories
             try
             {
                 var result = Collection.UpdateOne(filter, update);
+                return ServiceResult.Okay(Messages.ItemUpdated);
 
-                return result.IsAcknowledged && result.IsModifiedCountAvailable
-                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
-                    : ServiceResult.Okay("item successfully updated.");
+                //return result.IsAcknowledged && result.IsModifiedCountAvailable
+                //    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                //    : ServiceResult.Okay("item successfully updated.");
             }
             catch (Exception ex)
             {
@@ -171,10 +178,11 @@ namespace Alamut.Data.MongoDb.Repositories
             try
             {
                 var result = Collection.UpdateOne(filter, update);
+                return ServiceResult.Okay(Messages.ItemUpdated);
 
-                return result.IsAcknowledged && result.IsModifiedCountAvailable
-                    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
-                    : ServiceResult.Okay("item successfully updated.");
+                //return result.IsAcknowledged && result.IsModifiedCountAvailable
+                //    ? ServiceResult.Okay($"{result.ModifiedCount} item successfully updated.")
+                //    : ServiceResult.Okay("item successfully updated.");
             }
             catch (Exception ex)
             {
@@ -190,10 +198,11 @@ namespace Alamut.Data.MongoDb.Repositories
             try
             {
                 var result = Collection.DeleteOne(filter);
+                return ServiceResult.Okay(Messages.ItemDeleted);
 
-                return result.IsAcknowledged
-                    ? ServiceResult.Okay($"{result.DeletedCount} item(s) successfully deleted.")
-                    : ServiceResult.Okay("item(s) successfully deleted.");
+                //return result.IsAcknowledged
+                //    ? ServiceResult.Okay($"{result.DeletedCount} item(s) successfully deleted.")
+                //    : ServiceResult.Okay("item(s) successfully deleted.");
             }
             catch (Exception ex)
             {
@@ -207,10 +216,11 @@ namespace Alamut.Data.MongoDb.Repositories
             try
             {
                 var result = Collection.DeleteMany(predicate);
+                return ServiceResult.Okay(Messages.ItemDeleted);
 
-                return result.IsAcknowledged
-                    ? ServiceResult.Okay($"{result.DeletedCount} item(s) successfully deleted.")
-                    : ServiceResult.Okay("item(s) successfully deleted.");
+                //return result.IsAcknowledged
+                //    ? ServiceResult.Okay($"{result.DeletedCount} item(s) successfully deleted.")
+                //    : ServiceResult.Okay("item(s) successfully deleted.");
             }
             catch (Exception ex)
             {

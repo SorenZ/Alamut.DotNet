@@ -5,8 +5,6 @@ using System.Linq.Expressions;
 using Alamut.Data.Entity;
 using Alamut.Data.Paging;
 using Alamut.Data.Repository;
-using Alamut.Helpers.Localization;
-using Alamut.Utilities.Localization;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

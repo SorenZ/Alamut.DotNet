@@ -27,20 +27,20 @@ namespace Alamut.Service
         /// <param name="mapper"></param>
         /// <param name="historyRepository"></param>
         public FullService(IRepository<TDocument> repository,
-            IMapper mapper,
+            //IMapper mapper,
             IHistoryRepository historyRepository = null,
             UserResolverService userResolverService = null)
         {
             Repository = repository;
-            Mapper = mapper;
+            //Mapper = mapper;
 
             if (historyRepository != null && userResolverService != null)
             {
-                _crudService = _historyService = new HistoryService<TDocument>(repository, historyRepository, mapper, userResolverService);
+                _crudService = _historyService = new HistoryService<TDocument>(repository, historyRepository, userResolverService);
             }
             else
             {
-                _crudService = new CrudService<TDocument>(repository, mapper);
+                _crudService = new CrudService<TDocument>(repository);
             }
 
         }
@@ -55,7 +55,7 @@ namespace Alamut.Service
 
         #region ICrudService
 
-        protected IMapper Mapper { get; }
+        //protected IMapper Mapper { get; }
 
         public ServiceResult<string> Create<TModel>(TModel model)
         {

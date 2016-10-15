@@ -1,10 +1,11 @@
 ﻿{
-  "version": "2.1.2",
+  "version": "2.1.3",
 
   "dependencies": {
     "Microsoft.AspNetCore.Http": "1.0.0",
     "Microsoft.AspNetCore.Localization": "1.0.0",
     "Microsoft.Extensions.Options": "1.0.0",
+    "AutoMapper": "*",
 
     "Alamut.Data": "*",
     "Alamut.Helpers": "*"

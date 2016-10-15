@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Alamut.Data.Entity;
 using Alamut.Data.Repository;
+using Alamut.Data.SSOT;
 using Alamut.Data.Structure;
 using Alamut.Helpers.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,8 @@ namespace Alamut.Data.Sql.EF.Repositories
             {
                 base.DbSet.Add(entity);
                 var item = base.Context.SaveChanges();
-                return ServiceResult<string>.Okay(entity.Id, $"{item} item successfully created.");
+                //return ServiceResult<string>.Okay(entity.Id, $"{item} item successfully created.");
+                return ServiceResult<string>.Okay(Messages.ItemCreated);
             }
             catch (Exception ex)
             {
@@ -37,7 +39,8 @@ namespace Alamut.Data.Sql.EF.Repositories
             {
                 base.DbSet.AddRange(list);
                 var item = base.Context.SaveChanges();
-                return ServiceResult.Okay($"{item} item(s) successfully created.");
+                //return ServiceResult.Okay($"{item} item(s) successfully created.");
+                return ServiceResult.Okay(Messages.ItemsCreated);
             }
             catch (Exception ex)
             {
@@ -57,7 +60,8 @@ namespace Alamut.Data.Sql.EF.Repositories
             try
             {
                 var item = base.Context.SaveChanges();
-                return ServiceResult.Okay($"{item} item successfully updated.");
+                return ServiceResult.Okay(Messages.ItemUpdated);
+                //return ServiceResult.Okay($"{item} item successfully updated.");
             }
             catch (Exception ex)
             {
@@ -76,7 +80,8 @@ namespace Alamut.Data.Sql.EF.Repositories
                 var memberName = LambdaExpressions.GetName(memberExpression);
                 entity.GetType().GetProperty(memberName).SetValue(entity,value);
                 var item = base.Context.SaveChanges();
-                return ServiceResult.Okay($"{item} item successfully updated.");
+                return ServiceResult.Okay(Messages.ItemUpdated);
+                //return ServiceResult.Okay($"{item} item successfully updated.");
             }
             catch (Exception ex)
             {
@@ -95,7 +100,8 @@ namespace Alamut.Data.Sql.EF.Repositories
                 var memberName = LambdaExpressions.GetName(memberExpression);
                 entity.GetType().GetProperty(memberName).SetValue(entity, value);
                 var item = base.Context.SaveChanges();
-                return ServiceResult.Okay($"{item} item successfully updated.");
+                return ServiceResult.Okay(Messages.ItemUpdated);
+                //return ServiceResult.Okay($"{item} item successfully updated.");
             }
             catch (Exception ex)
             {
@@ -115,7 +121,8 @@ namespace Alamut.Data.Sql.EF.Repositories
                     entity.GetType().GetProperty(field.Key).SetValue(entity, field.Value);
 
                 var item = base.Context.SaveChanges();
-                return ServiceResult.Okay($"{item} item(s) successfully updated.");
+                return ServiceResult.Okay(Messages.ItemUpdated);
+                //return ServiceResult.Okay($"{item} item(s) successfully updated.");
 
             }
             catch (Exception ex)
@@ -149,7 +156,8 @@ namespace Alamut.Data.Sql.EF.Repositories
                 base.DbSet.Remove(entity);
                 var rows = base.Context.SaveChanges();
 
-                return ServiceResult.Okay($"{rows} item(s) successfully deleted.");
+                return ServiceResult.Okay(Messages.ItemDeleted);
+                //return ServiceResult.Okay($"{rows} item(s) successfully deleted.");
 
             }
             catch (Exception ex)
@@ -167,7 +175,8 @@ namespace Alamut.Data.Sql.EF.Repositories
 
                 var rows = base.Context.SaveChanges();
 
-                return ServiceResult.Okay($"{rows} item(s) successfully deleted.");
+                return ServiceResult.Okay(Messages.ItemDeleted);
+                //return ServiceResult.Okay($"{rows} item(s) successfully deleted.");
             }
             catch (Exception ex)
             {
