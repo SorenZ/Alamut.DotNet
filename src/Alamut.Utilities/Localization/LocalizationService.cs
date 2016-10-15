@@ -8,6 +8,7 @@ using Microsoft.Extensions.Options;
 
 namespace Alamut.Utilities.Localization
 {
+    [Obsolete("use LocalizationConfig instead.")]
     public class LocalizationService : ILocalizationService
     {
         private readonly IOptions<LocalizationConfig> _configuration;

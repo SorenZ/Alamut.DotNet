@@ -4,10 +4,12 @@ using System.Globalization;
 
 namespace Alamut.Utilities.Localization
 {
+
     /// <summary>
     /// provide localization information throughout framework
     /// </summary>
-    public interface ILocalizationService
+    [Obsolete("use LocalizationConfig instead.")]
+    public interface ILocalizationService // TODO : subject to remove
     {
         /// <summary>
         /// get supported languages 
