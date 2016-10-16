@@ -87,7 +87,7 @@ namespace Alamut.Service
             return base.Repository.Delete(id);
         }
 
-        public virtual TResult Get<TResult>(string id) // // TODO : move to repository to get rid of multi-language queryable
+        public virtual TResult Get<TResult>(string id) // // TODO : move to queryable repository to get rid of multi-language queryable
         {
             return base.Repository.Queryable
                 .Where(q => q.Id == id)
@@ -95,7 +95,7 @@ namespace Alamut.Service
                 .FirstOrDefault();
         }
 
-        public List<TResult> GetMany<TResult>(IEnumerable<string> ids) // TODO : move to repository to get rid of multi-language queryable
+        public List<TResult> GetMany<TResult>(IEnumerable<string> ids) // TODO : move to queryable repository to get rid of multi-language queryable
         {
             return base.Repository.Queryable
                 .Where(q => ids.Contains(q.Id))
