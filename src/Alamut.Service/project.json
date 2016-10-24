@@ -1,8 +1,8 @@
 ﻿{
-  "version": "2.1.1",
+  "version": "2.1.2",
 
   "dependencies": {
-    "AutoMapper": "*",
+    "AutoMapper": "5.1.1",
     "Alamut.Data": "*",
     "Alamut.Utilities": "*"
   },
