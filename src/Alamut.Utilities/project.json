@@ -2,6 +2,9 @@
   "version": "2.1.3",
 
   "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "System.Threading.Thread": "4.0.0",
+    "System.Security.Cryptography.Algorithms": "4.2.0",
     "Microsoft.AspNetCore.Http": "1.0.0",
     "Microsoft.AspNetCore.Localization": "1.0.0",
     "Microsoft.Extensions.Options": "1.0.0",
@@ -13,7 +16,8 @@
   },
 
   "frameworks": {
-    "net451": {
+    "netstandard1.6": {
     }
   }
 }
+
