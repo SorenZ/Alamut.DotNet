@@ -56,7 +56,8 @@ namespace Alamut.Utilities.Security
         public static string CreateHash(string password)
         {
             // Generate a random salt
-            RNGCryptoServiceProvider csprng = new RNGCryptoServiceProvider();
+            //RNGCryptoServiceProvider csprng = new RNGCryptoServiceProvider();
+            var csprng = RandomNumberGenerator.Create(); // compatibility to .net core
             byte[] salt = new byte[SALT_BYTE_SIZE];
             csprng.GetBytes(salt);
 
