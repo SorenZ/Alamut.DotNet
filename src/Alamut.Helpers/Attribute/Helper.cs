@@ -38,7 +38,8 @@ namespace Alamut.Helpers.Attribute
         /// <see cref="http://stackoverflow.com/questions/2536675/access-custom-attribute-on-method-from-castle-windsor-interceptor"/>
         public static T GetAttribute<T>(MemberInfo memberInfo) where T : class
         {
-            return System.Attribute.GetCustomAttribute(memberInfo, typeof(T), true) as T;
+            return memberInfo.GetCustomAttribute(typeof(T), true) as T;
+            //return System.Attribute.GetCustomAttribute(memberInfo, typeof(T), true) as T;
         }
 
         public static T GetAttribute<T>(System.Enum enumValue) where T : System.Attribute
@@ -47,13 +48,11 @@ namespace Alamut.Helpers.Attribute
                 .GetMember(enumValue.ToString())
                 .FirstOrDefault();
 
-            if (memberInfo != null)
-            {
-                T attribute = (T)memberInfo.GetCustomAttributes(typeof(T), false).FirstOrDefault();
-                return attribute;
-            }
+            var attribute = (T) memberInfo?
+                .GetCustomAttributes(typeof(T), false)
+                .FirstOrDefault();
 
-            return null;
+            return attribute;
         }
 
     }

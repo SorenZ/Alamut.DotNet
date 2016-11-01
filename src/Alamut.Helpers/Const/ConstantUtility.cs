@@ -13,7 +13,7 @@ namespace Alamut.Helpers.Const
         /// <param name="type"></param>
         /// <returns></returns>
         /// <remarks>based on this article : http://stackoverflow.com/a/10261848/428061 </remarks>
-        public static IEnumerable<FieldInfo> GetConstants(this IReflect type)
+        public static IEnumerable<FieldInfo> GetConstants(this Type type)
         {
             return type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
                 .Where(fi => fi.IsLiteral && !fi.IsInitOnly);
