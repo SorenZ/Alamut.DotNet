@@ -1,14 +1,18 @@
 ﻿{
-    "version": "2.1.1",
+  "version": "3.0.0",
+  "authors": [ "Soren Zand" ],
+  "description": "upgrade to netstandard in version 3.0.0",
 
-    "dependencies": {
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
         "Microsoft.EntityFrameworkCore": "1.0.1",
         "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
+        
         "Alamut.Data": "*",
         "Alamut.Helpers": "*"
     },
 
     "frameworks": {
-        "net451": {}
+        "netstandard1.6": {}
     }
 }

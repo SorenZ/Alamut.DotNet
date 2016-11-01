@@ -1,16 +1,19 @@
 ﻿{
-  "version": "2.1.2",
+  "version": "3.0.0",
+  "authors": [ "Soren Zand" ],
+  "description": "upgrade to netstandard in version 3.0.0",
 
   "dependencies": {
-    "MongoDB.Driver": "2.2.4",
+    "NETStandard.Library": "1.6.0",
+    "MongoDB.Driver": "2.3.0",
     "Newtonsoft.Json": "9.0.1",
-    
+
     "Alamut.Data": "*",
     "Alamut.Utilities": "*"
   },
 
   "frameworks": {
-    "net451": {
-      }
+    "netstandard1.6": {
     }
+  }
 }

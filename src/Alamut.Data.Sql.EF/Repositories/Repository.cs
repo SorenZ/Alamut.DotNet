@@ -8,6 +8,7 @@ using Alamut.Data.SSOT;
 using Alamut.Data.Structure;
 using Alamut.Helpers.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Alamut.Data.Sql.EF.Repositories
 {
