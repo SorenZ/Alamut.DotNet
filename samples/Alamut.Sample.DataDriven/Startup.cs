@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alamut.Data.MongoDb.Mapper;
+﻿using Alamut.Data.MongoDb.Mapper;
 using Alamut.Sample.DataDriven.Contracts;
+using Alamut.Sample.DataDriven.Mapper;
 using Alamut.Sample.DataDriven.Models;
 using Alamut.Sample.DataDriven.Repositories;
 using Alamut.Sample.DataDriven.Services;
@@ -55,6 +52,8 @@ namespace Alamut.Sample.DataDriven
             services.AddScoped<IArticleRepo, ArticleRepo>();
             services.AddScoped<IArticleService, ArticleService>();
 
+            // object mapping
+            AutoMapper.Mapper.Initialize(config => config.AddProfile<MapStrapper>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +65,6 @@ namespace Alamut.Sample.DataDriven
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
