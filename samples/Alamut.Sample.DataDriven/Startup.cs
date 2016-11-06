@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alamut.Data.MongoDb.Mapper;
+using Alamut.Sample.DataDriven.Contracts;
+using Alamut.Sample.DataDriven.Models;
+using Alamut.Sample.DataDriven.Repositories;
+using Alamut.Sample.DataDriven.Services;
+using Alamut.Utilities.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MongoDB.Driver;
 
 namespace Alamut.Sample.DataDriven
 {
@@ -19,22 +27,40 @@ namespace Alamut.Sample.DataDriven
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-            Configuration = builder.Build();
+
+            _configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        private readonly IConfigurationRoot _configuration;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
+
+
+            // -----------------------------<( Dependency Injection )>-----------------------------
+            // ASP.NET
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddScoped<UserResolverService>(); // to find and resolve user information service throughout alamut and other framework
+
+            // database
+            services.AddSingleton<IMongoDatabase>(_ =>
+                new MongoClient(this._configuration["data:mongoConnection"])
+                    .GetDatabase(this._configuration["data:mongoDatabase"]));
+
+            // repositories 
+            services.AddScoped<IArticleRepo, ArticleRepo>();
+            services.AddScoped<IArticleService, ArticleService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddConsole(_configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
             if (env.IsDevelopment())
@@ -55,6 +81,9 @@ namespace Alamut.Sample.DataDriven
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // configure database
+            MongoMapper.MapId<Article>();
         }
     }
 }
