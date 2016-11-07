@@ -46,8 +46,6 @@ namespace Alamut.Data.MongoDb.Repositories
 
         public virtual ServiceResult Update(TDocument entity)
         {
-
-
             var filter = Builders<TDocument>.Filter
                 .Eq(m => m.Id, entity.Id);
 
@@ -167,7 +165,9 @@ namespace Alamut.Data.MongoDb.Repositories
             }
         }
 
-        public virtual ServiceResult RemoveFromList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value)
+        public virtual ServiceResult RemoveFromList<TValue>(string id, 
+            Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, 
+            TValue value)
         {
             var filter = Builders<TDocument>.Filter
                 .Eq(m => m.Id, id);

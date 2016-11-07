@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace Alamut.Data.SSOT
 {
@@ -12,6 +8,9 @@ namespace Alamut.Data.SSOT
 
         public const string ItemCreatedPersian = @"آیتم با موفقیت ایجاد شد";
         public const string ItemCreatedEnglish = @"item successfully created";
+
+        public const string ItemsCreatedPersian = @"آیتم ها با موفقیت ایجاد شدند";
+        public const string ItemsCreatedEnglish = @"items successfully created";
 
         public const string ItemUpdatedPersian = @"تغیرات با موفقیت ثبت شد";
         public const string ItemUpdatedEnglish = @"item(s) successfully updated";
@@ -24,8 +23,8 @@ namespace Alamut.Data.SSOT
             : ItemCreatedEnglish;
 
         public static string ItemsCreated => IsRtl
-            ? @"آیتم ها با موفقیت ایجاد شدند"
-            : "items successfully created";
+            ? ItemsCreatedPersian
+            : ItemsCreatedEnglish;
 
         public static string ItemUpdated => IsRtl
             ? ItemUpdatedPersian

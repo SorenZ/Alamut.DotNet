@@ -1,4 +1,5 @@
-﻿using Alamut.Data.MongoDb.Mapper;
+﻿using System.IO;
+using Alamut.Data.MongoDb.Mapper;
 using Alamut.Sample.DataDriven.Contracts;
 using Alamut.Sample.DataDriven.Mapper;
 using Alamut.Sample.DataDriven.Models;
@@ -44,12 +45,23 @@ namespace Alamut.Sample.DataDriven
             services.AddScoped<UserResolverService>(); // to find and resolve user information service throughout alamut and other framework
 
             // database
+            //var settings = new MongoClientSettings
+            //{
+            //    ClusterConfigurator = cb =>
+            //    {
+            //        var textWriter = TextWriter.Synchronized(new StreamWriter("mylogfile.txt"));
+            //        cb.AddListener(new LogListener(textWriter));
+            //    }
+            //};
+
             services.AddSingleton<IMongoDatabase>(_ =>
                 new MongoClient(this._configuration["data:mongoConnection"])
                     .GetDatabase(this._configuration["data:mongoDatabase"]));
 
             // repositories 
             services.AddScoped<IArticleRepo, ArticleRepo>();
+
+            // services
             services.AddScoped<IArticleService, ArticleService>();
 
             // object mapping
