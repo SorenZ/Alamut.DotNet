@@ -27,7 +27,7 @@
         /// </summary>
         /// <param name="source"> </param>
         /// <returns> </returns>
-        public static string ConvertToPersianDigit(string source)
+        public static string ToPersianDigit(this string source)
         {
             if (string.IsNullOrWhiteSpace(source))
             {
@@ -38,6 +38,27 @@
             for (var i = 0; i <= 9; i++)
             {
                 source = source.Replace(i.ToString(), nums[i]);
+            }
+
+            return source;
+        }
+
+        /// <summary>
+        /// Converts all digits in the given string to the English digits.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static string ToEgnlishDigit(this string source)
+        {
+            if (string.IsNullOrWhiteSpace(source))
+            {
+                return source;
+            }
+
+            var nums = new[] { "۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹" };
+            for (var i = 0; i <= 9; i++)
+            {
+                source = source.Replace(nums[i], i.ToString());
             }
 
             return source;

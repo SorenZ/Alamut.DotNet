@@ -9,9 +9,9 @@ namespace Alamut.Helpers.Text
         /// </summary>
         /// <param name="s"></param>
         /// <returns>true if string is null or empty</returns>
-        public static bool IsNullOrEmpty(this String s)
+        public static bool IsNullOrEmpty(this string s)
         {
-            return String.IsNullOrEmpty(s);
+            return string.IsNullOrEmpty(s);
         }
     }
 }
