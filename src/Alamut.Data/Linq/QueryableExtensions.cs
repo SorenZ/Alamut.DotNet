@@ -17,13 +17,18 @@ namespace Alamut.Data.Linq
         public static IQueryable<T> ToPage<T>(this IQueryable<T> query, int startIndex, int itemCount)
         {
             if (query == null)
-                throw new ArgumentNullException("query");
+                throw new ArgumentNullException(nameof(query));
 
             if (startIndex < 0)
                 startIndex = 0;
 
             return query.Skip(startIndex).Take(itemCount);
-        } 
+        }
+
+        public static IQueryable<T> ToPage<T>(this IQueryable<T> query, IPaginatedCriteria criteria)
+        {
+            return query.ToPage(criteria.StartIndex, criteria.PageSize);
+        }
 
         /// <summary>
         /// Creates an <see cref="IPaginated{T}" /> instance from the specified query.

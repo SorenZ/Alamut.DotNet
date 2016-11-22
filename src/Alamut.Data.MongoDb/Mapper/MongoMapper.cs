@@ -27,7 +27,6 @@ namespace Alamut.Data.MongoDb.Mapper
                 cm.MapIdMember(c => c.Id)
                     .SetSerializer(new StringSerializer(BsonType.ObjectId))
                     .SetIdGenerator(StringObjectIdGenerator.Instance);
-                //cm.MapIdMember(c => c.Id).SetIdGenerator(StringObjectIdGenerator.Instance);
                 cm.SetIgnoreExtraElements(true);
             });
         }
