@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Web.Test", "test\Alamut.Web.Test\Alamut.Web.Test.xproj", "{39B6C9FB-0979-4D0C-BED7-A694AE444728}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{EBFCA979-5666-4D2E-9776-3382AF5669FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBFCA979-5666-4D2E-9776-3382AF5669FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBFCA979-5666-4D2E-9776-3382AF5669FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B6C9FB-0979-4D0C-BED7-A694AE444728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B6C9FB-0979-4D0C-BED7-A694AE444728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B6C9FB-0979-4D0C-BED7-A694AE444728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B6C9FB-0979-4D0C-BED7-A694AE444728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,5 +101,6 @@ Global
 		{B0A2E976-7060-409A-8BB9-BB9E72E7781E} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 		{7B82254E-6450-4A6F-8E0F-9111680CF528} = {DEBF0D01-9702-493A-864C-BF856280F281}
 		{EBFCA979-5666-4D2E-9776-3382AF5669FC} = {3CCC4C49-A61A-43CF-9006-A6738178C433}
+		{39B6C9FB-0979-4D0C-BED7-A694AE444728} = {DEBF0D01-9702-493A-864C-BF856280F281}
 	EndGlobalSection
 EndGlobal
