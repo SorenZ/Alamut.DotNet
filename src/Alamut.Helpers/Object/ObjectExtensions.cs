@@ -23,7 +23,7 @@ namespace Alamut.Helpers.Object
         /// <returns>true if object null</returns>
         public static bool IsNull(this object obj)
         {
-            return obj == null;
+            return obj == null; 
         }
     }
 }

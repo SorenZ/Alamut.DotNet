@@ -1,7 +1,7 @@
 ﻿{
-  "version": "3.0.0",
+  "version": "3.0.1",
   "authors": [ "Soren Zand" ],
-  "description": "upgrade to netstandard in version 3.0.0",
+  "description": "upgrade to netstandard in version 3.0.1",
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
@@ -12,15 +12,12 @@
     "Microsoft.Extensions.Options": "1.0.0",
     "AutoMapper": "5.1.1",
     "Newtonsoft.Json": "*",
-    //"Microsoft.AspNet.WebApi.Client": "5.2.3",
-    "Alamut.Data": "*",
-    "Alamut.Helpers": "*"
-
+    "Alamut.Data": "3.0.1",
+    "Alamut.Helpers": "3.0.1"
   },
 
   "frameworks": {
-    "netstandard1.6": {
-      //"imports": [ "dnxcore50", "portable-net45+netcore45+wp8+wp81+wpa81" ]
+    "netstandard1.5": {
     }
   }
 }

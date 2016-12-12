@@ -20,11 +20,7 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
-    "Alamut.Data": "3.0.0",
-    "Alamut.Data.MongoDb": "3.0.0",
-    "Alamut.Helpers": "3.0.0",
-    "Alamut.Service": "3.0.0",
-    "Alamut.Utilities": "3.0.0"
+    "Alamut.Utilities": "3.0.1"
   },
 
   "tools": {
