@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alamut.Data.SSOT;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Alamut.Web.Test.Controllers
@@ -10,7 +11,7 @@ namespace Alamut.Web.Test.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return Content(Messages.ItemCreated);
         }
 
         public IActionResult About()

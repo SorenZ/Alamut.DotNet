@@ -57,7 +57,7 @@ namespace Alamut.Sample.DataDriven
             services.AddSingleton<IMongoDatabase>(_ =>
                 new MongoClient(this._configuration["data:mongoConnection"])
                     .GetDatabase(this._configuration["data:mongoDatabase"]));
-
+             
             // repositories 
             services.AddScoped<IArticleRepo, ArticleRepo>();
 

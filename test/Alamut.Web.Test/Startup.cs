@@ -1,4 +1,4 @@
-﻿using Alamut.Utilities.Google;
+﻿//using Alamut.Utilities.Google;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,8 +30,8 @@ namespace Alamut.Web.Test
             services.AddMvc();
 
             // register google-chaptcha-configuration
-            services.AddSingleton(_configuration.GetSection("Google:GoogleCaptchaConfig").Get<GoogleCaptchaConfig>());
-            services.AddSingleton<CaptchaService>();
+            //services.AddSingleton(_configuration.GetSection("Google:GoogleCaptchaConfig").Get<GoogleCaptchaConfig>());
+            //services.AddSingleton<CaptchaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

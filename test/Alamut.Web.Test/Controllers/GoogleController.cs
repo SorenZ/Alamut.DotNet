@@ -1,17 +1,16 @@
-﻿using Alamut.Utilities.Google;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 
 namespace Alamut.Web.Test.Controllers
 {
     public class GoogleController : Controller
     {
-        private readonly CaptchaService _captchaService;
+        //private readonly CaptchaService _captchaService;
 
-        public GoogleController(CaptchaService chaptchaService)
-        {
-            _captchaService = chaptchaService;
-        }
+        //public GoogleController(CaptchaService chaptchaService)
+        //{
+        //    _captchaService = chaptchaService;
+        //}
 
         public IActionResult Index()
         {
@@ -23,14 +22,14 @@ namespace Alamut.Web.Test.Controllers
             return View();
         }
 
-        public IActionResult CaptchaDo()
-        {
-            var code = Request.Form["g-recaptcha-response"];
+        //public IActionResult CaptchaDo()
+        //{
+        //    var code = Request.Form["g-recaptcha-response"];
 
-            var result = _captchaService.ValidateGoogleChaptcha(code);
+        //    var result = _captchaService.ValidateGoogleChaptcha(code);
 
-            return Json(result.Result);
-        }
+        //    return Json(result.Result);
+        //}
 
 
     }
