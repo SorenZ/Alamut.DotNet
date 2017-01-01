@@ -5,7 +5,6 @@ using Alamut.Data.Repository;
 using Alamut.Data.Service;
 using Alamut.Data.Structure;
 using Alamut.Utilities.Http;
-using AutoMapper;
 
 namespace Alamut.Service
 {

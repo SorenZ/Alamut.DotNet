@@ -4,27 +4,20 @@
   "description": "upgrade to netstandard in version 3.0.1",
 
   "dependencies": {
-    "Microsoft.AspNetCore.Http": "1.0.0",
-    "Microsoft.AspNetCore.Localization": "1.0.0",
-    "Microsoft.Extensions.Options": "1.0.0",
+    "NETStandard.Library": "1.6.1",
+    "Microsoft.AspNetCore.Localization": "1.1.0",
     "AutoMapper": "5.1.1",
     "Newtonsoft.Json": "*",
+    "Microsoft.AspNetCore.Http": "1.1.0",
+    "Microsoft.Extensions.Options": "1.1.0",
+    "System.Security.Cryptography.Algorithms": "4.3.0",
+    "System.Threading.Thread": "4.3.0",
     "Alamut.Data": "3.0.1",
     "Alamut.Helpers": "3.0.1"
   },
 
   "frameworks": {
     "netstandard1.5": {
-      "dependencies": {
-        "NETStandard.Library": "1.6.0",
-        "System.Threading.Thread": "4.0.0",
-        "System.Security.Cryptography.Algorithms": "4.2.0",
-      }
-    },
-    "net451": {
-      "dependencies": {
-        "System.Net.Http": "4.0.0"
-      }
     }
   }
 }
