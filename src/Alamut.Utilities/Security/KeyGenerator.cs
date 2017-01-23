@@ -74,7 +74,7 @@ namespace Alamut.Utilities.Security
         public static string GenerateByTime(DateTime? baseDateTime = null)
         {
             Thread.Sleep(1);
-            var @base = ulong.Parse((baseDateTime ?? new DateTime(2016, 07, 05)) // the time I was create this function
+            var @base = ulong.Parse((baseDateTime ?? new DateTime(2016, 07, 05)) // the time I created this function
                 .ToString("yyMMddHHmmssfff"));
             var now = ulong.Parse(DateTime.Now.ToString("yyMMddHHmmssfff"));
 
