@@ -12,13 +12,12 @@ namespace Alamut.Service
     IHistoryService<TDocument> 
         where TDocument : IEntity
     {
-        private readonly UserResolverService _userResolverService;
+        private readonly IUserResolverService _userResolverService;
         private readonly IHistoryRepository _historyRepository;
 
         public HistoryService(IRepository<TDocument> repository,
             IHistoryRepository historyRepository,
-            //IMapper mapper,
-            UserResolverService userResolverService) 
+            IUserResolverService userResolverService) 
             : base(repository)
         {
             _userResolverService = userResolverService;
@@ -34,13 +33,13 @@ namespace Alamut.Service
             var history = new BaseHistory
             {
                 Action = HistoryActions.Create,
-                UserId = _userResolverService.GetUserId(),
+                UserId = _userResolverService.UserId,
                 CreateDate = DateTime.Now,
                 EntityId = result.Data,
                 EntityName = typeof(TDocument).Name,
                 ModelName = typeof(TModel).Name,
                 ModelValue = model,
-                UserIp = _userResolverService.GetUserIpAddress()
+                UserIp = _userResolverService.UserIpAddress
             };
 
             _historyRepository.Push(history);
@@ -57,13 +56,13 @@ namespace Alamut.Service
             var history = new BaseHistory
             {
                 Action = HistoryActions.Update,
-                UserId = _userResolverService.GetUserId(),
+                UserId = _userResolverService.UserId,
                 CreateDate = DateTime.Now,
                 EntityId = id,
                 EntityName = typeof(TDocument).Name,
                 ModelName = typeof(TModel).Name,
                 ModelValue = model,
-                UserIp = _userResolverService.GetUserIpAddress()
+                UserIp = _userResolverService.UserIpAddress
             };
 
             _historyRepository.Push(history);
@@ -81,13 +80,13 @@ namespace Alamut.Service
             var history = new BaseHistory
             {
                 Action = HistoryActions.Delete,
-                UserId = _userResolverService.GetUserId(),
+                UserId = _userResolverService.UserId,
                 CreateDate = DateTime.Now,
                 EntityId = id,
                 EntityName = typeof(TDocument).Name,
                 ModelName = typeof(TDocument).Name,
                 ModelValue = entity,
-                UserIp = _userResolverService.GetUserIpAddress()
+                UserIp = _userResolverService.UserIpAddress
             };
 
             _historyRepository.Push(history);

@@ -28,7 +28,7 @@ namespace Alamut.Service
         public FullService(IRepository<TDocument> repository,
             //IMapper mapper,
             IHistoryRepository historyRepository = null,
-            UserResolverService userResolverService = null)
+            IUserResolverService userResolverService = null)
         {
             Repository = repository;
             //Mapper = mapper;
