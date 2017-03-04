@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Alamut.Helpers.Text
+﻿namespace Alamut.Helpers.Text
 {
     public static class StringExtensions
     {

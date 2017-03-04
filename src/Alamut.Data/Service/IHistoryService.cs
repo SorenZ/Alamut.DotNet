@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Alamut.Data.Entity;
-using Alamut.Data.Structure;
 
 namespace Alamut.Data.Service
 {

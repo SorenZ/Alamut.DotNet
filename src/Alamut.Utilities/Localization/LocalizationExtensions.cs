@@ -7,22 +7,6 @@ namespace Alamut.Utilities.Localization
     {
 
         /// <summary>
-        /// filter query by localization service 
-        /// </summary>
-        /// <remarks>if current system support multi language</remarks>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
-        /// <param name="service"></param>
-        /// <returns></returns>
-        public static IQueryable<T> FilterByLanguage<T>(this IQueryable<T> source, ILocalizationService service)
-            where T : IMultiLanguageEnity
-        {
-            return service != null && service.IsMulitLanguage
-                ? source.Where(q => q.Lang == service.CurrentLanguage)
-                : source;
-        }
-
-        /// <summary>
         /// filter query by provided language key
         /// </summary>
         /// <typeparam name="T"></typeparam>
