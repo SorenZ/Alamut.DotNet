@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>upgrade to netstandard in version 3.0.1</Description>
+    <VersionPrefix>3.0.1</VersionPrefix>
+    <Authors>Soren Zand</Authors>
+    <TargetFramework>netstandard1.5</TargetFramework>
+    <AssemblyName>Alamut.Core</AssemblyName>
+    <PackageId>Alamut.Core</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+</Project>

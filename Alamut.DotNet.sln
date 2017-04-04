@@ -1,21 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{17982A1F-1B1A-41C8-A200-1922BA6FFD8E}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Core", "src\Alamut.Core\Alamut.Core.xproj", "{5577C183-60C5-461F-8514-300F67B11E65}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Helpers", "src\Alamut.Helpers\Alamut.Helpers.xproj", "{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Utilities", "src\Alamut.Utilities\Alamut.Utilities.xproj", "{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Data", "src\Alamut.Data\Alamut.Data.xproj", "{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Data.MongoDb", "src\Alamut.Data.MongoDb\Alamut.Data.MongoDb.xproj", "{8302E370-A4A2-4D94-B68E-DDBB225D53D4}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Service", "src\Alamut.Service\Alamut.Service.xproj", "{23BC6B34-44B9-41B6-8AB8-2E334C28A523}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{A5252323-3708-4EE6-BF28-80B1FA80E64F}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,22 +12,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{A5252323
 		nuget\update-package.txt = nuget\update-package.txt
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Data.Sql.EF", "src\Alamut.Data.Sql.EF\Alamut.Data.Sql.EF.xproj", "{B0A2E976-7060-409A-8BB9-BB9E72E7781E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DEBF0D01-9702-493A-864C-BF856280F281}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Service.Test", "test\Alamut.Service.Test\Alamut.Service.Test.xproj", "{7B82254E-6450-4A6F-8E0F-9111680CF528}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{3CCC4C49-A61A-43CF-9006-A6738178C433}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Sample.DataDriven", "samples\Alamut.Sample.DataDriven\Alamut.Sample.DataDriven.xproj", "{EBFCA979-5666-4D2E-9776-3382AF5669FC}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CEA3E86A-1C9D-41FA-A0E3-8A3729A9567B}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Alamut.Web.Test", "test\Alamut.Web.Test\Alamut.Web.Test.xproj", "{39B6C9FB-0979-4D0C-BED7-A694AE444728}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Core", "src\Alamut.Core\Alamut.Core.csproj", "{5577C183-60C5-461F-8514-300F67B11E65}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Helpers", "src\Alamut.Helpers\Alamut.Helpers.csproj", "{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Data", "src\Alamut.Data\Alamut.Data.csproj", "{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Data.MongoDb", "src\Alamut.Data.MongoDb\Alamut.Data.MongoDb.csproj", "{8302E370-A4A2-4D94-B68E-DDBB225D53D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Service", "src\Alamut.Service\Alamut.Service.csproj", "{23BC6B34-44B9-41B6-8AB8-2E334C28A523}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Data.Sql.EF", "src\Alamut.Data.Sql.EF\Alamut.Data.Sql.EF.csproj", "{B0A2E976-7060-409A-8BB9-BB9E72E7781E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Service.Test", "test\Alamut.Service.Test\Alamut.Service.Test.csproj", "{7B82254E-6450-4A6F-8E0F-9111680CF528}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Sample.DataDriven", "samples\Alamut.Sample.DataDriven\Alamut.Sample.DataDriven.csproj", "{EBFCA979-5666-4D2E-9776-3382AF5669FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Web.Test", "test\Alamut.Web.Test\Alamut.Web.Test.csproj", "{39B6C9FB-0979-4D0C-BED7-A694AE444728}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Utilities", "src\Alamut.Utilities\Alamut.Utilities.csproj", "{FA54083B-CF7C-42B2-895D-1CB2E7E541A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +52,6 @@ Global
 		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,6 +80,10 @@ Global
 		{39B6C9FB-0979-4D0C-BED7-A694AE444728}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39B6C9FB-0979-4D0C-BED7-A694AE444728}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39B6C9FB-0979-4D0C-BED7-A694AE444728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA54083B-CF7C-42B2-895D-1CB2E7E541A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA54083B-CF7C-42B2-895D-1CB2E7E541A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA54083B-CF7C-42B2-895D-1CB2E7E541A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA54083B-CF7C-42B2-895D-1CB2E7E541A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,7 +91,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5577C183-60C5-461F-8514-300F67B11E65} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 		{AD2E52DB-4F34-40AA-8FF9-DCE9B3D959DE} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
-		{DBFFD46A-77E7-47AD-A43C-337C7EE98DD0} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 		{5C6AE2D3-C7CB-4323-9BB3-323892BC5963} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 		{8302E370-A4A2-4D94-B68E-DDBB225D53D4} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 		{23BC6B34-44B9-41B6-8AB8-2E334C28A523} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
@@ -102,5 +98,6 @@ Global
 		{7B82254E-6450-4A6F-8E0F-9111680CF528} = {DEBF0D01-9702-493A-864C-BF856280F281}
 		{EBFCA979-5666-4D2E-9776-3382AF5669FC} = {3CCC4C49-A61A-43CF-9006-A6738178C433}
 		{39B6C9FB-0979-4D0C-BED7-A694AE444728} = {DEBF0D01-9702-493A-864C-BF856280F281}
+		{FA54083B-CF7C-42B2-895D-1CB2E7E541A8} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 	EndGlobalSection
 EndGlobal

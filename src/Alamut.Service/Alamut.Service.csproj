@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>upgrade to netstandard in version 3.0.1</Description>
+    <VersionPrefix>3.0.2</VersionPrefix>
+    <Authors>Soren Zand</Authors>
+    <TargetFramework>netstandard1.5</TargetFramework>
+    <AssemblyName>Alamut.Service</AssemblyName>
+    <PackageId>Alamut.Service</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alamut.Data\Alamut.Data.csproj" />
+    <ProjectReference Include="..\Alamut.Utilities\Alamut.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="5.1.1" />
+  </ItemGroup>
+
+</Project>
