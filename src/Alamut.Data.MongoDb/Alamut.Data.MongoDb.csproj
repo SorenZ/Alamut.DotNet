@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>upgrade to netstandard in version 3.0.1</Description>
-    <VersionPrefix>3.0.1</VersionPrefix>
+    <Description>provide data repository base for mongoDB backend store</Description>
+    <VersionPrefix>3.0.2</VersionPrefix>
     <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard1.5</TargetFramework>
     <AssemblyName>Alamut.Data.MongoDb</AssemblyName>
@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.3.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
   </ItemGroup>
 
 </Project>

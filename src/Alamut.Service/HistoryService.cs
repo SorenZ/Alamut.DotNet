@@ -8,9 +8,10 @@ using Alamut.Utilities.Http;
 
 namespace Alamut.Service
 {
-    public class HistoryService<TDocument> : CrudService<TDocument>,
-    IHistoryService<TDocument> 
-        where TDocument : IEntity
+    public class HistoryService<TDocument> : 
+        CrudService<TDocument>,
+        IHistoryService<TDocument> 
+            where TDocument : IEntity
     {
         private readonly IUserResolverService _userResolverService;
         private readonly IHistoryRepository _historyRepository;

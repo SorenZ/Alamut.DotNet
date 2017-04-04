@@ -15,13 +15,10 @@ namespace Alamut.Service
         ICrudService<TDocument>
         where TDocument : IEntity
     {
-        //protected IMapper Mapper { get; private set; }
-
         public CrudService(IRepository<TDocument> repository)
             : base(repository)
-        {
-            //Mapper = mapper;
-        }
+        {  }
+
 
         public virtual ServiceResult<string> Create<TModel>(TModel model)
         {

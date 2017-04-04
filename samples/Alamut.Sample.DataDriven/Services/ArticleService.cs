@@ -21,10 +21,10 @@ namespace Alamut.Sample.DataDriven.Services
         IArticleService
     {
         private readonly IArticleRepo _articleRepo;
-        private readonly UserResolverService _userResolverService;
+        private readonly IUserResolverService _userResolverService;
 
         public ArticleService(IArticleRepo articleRepo,
-            UserResolverService userResolverService) : base(articleRepo)
+            IUserResolverService userResolverService) : base(articleRepo)
         {
             _articleRepo = articleRepo;
             _userResolverService = userResolverService;
@@ -33,7 +33,7 @@ namespace Alamut.Sample.DataDriven.Services
         public ServiceResult<string> Create(ArticleCreateVm model)
         {
             model.Code = UniqueKeyGenerator.GenerateByTime();
-            model.UserId = _userResolverService.GetUserId();
+            model.UserId = _userResolverService.UserId;
 
             return base.Create(model);
         }

@@ -41,8 +41,7 @@ namespace Alamut.Sample.DataDriven
             // -----------------------------<( Dependency Injection )>-----------------------------
             // ASP.NET
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddScoped<UserResolverService>(); // to find and resolve user information service throughout alamut and other framework
+            services.AddScoped<IUserResolverService,UserResolverServiceByHttpContext>(); // to find and resolve user information service throughout alamut and other framework
 
             // database
             //var settings = new MongoClientSettings

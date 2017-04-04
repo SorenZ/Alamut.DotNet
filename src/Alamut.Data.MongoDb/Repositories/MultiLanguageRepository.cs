@@ -21,9 +21,9 @@ namespace Alamut.Data.MongoDb.Repositories
     {
         private readonly LocalizationConfig _localizationConfig;
 
-        public MultiLanguageRepository(IMongoDatabase database, IOptions<LocalizationConfig> options) : base(database)
+        public MultiLanguageRepository(IMongoDatabase database, LocalizationConfig localizationConfig) : base(database)
         {
-            _localizationConfig = options.Value;
+            _localizationConfig = localizationConfig;
         }
 
         public override IQueryable<TDocument> Queryable => _localizationConfig.IsMultiLanguage

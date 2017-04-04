@@ -9,7 +9,8 @@ using Alamut.Utilities.Http;
 
 namespace Alamut.Service
 {
-    public class FullService<TDocument> : //IFullService<TDocument>
+    [Obsolete("use HistoryService instead")]
+    public class FullService<TDocument> : 
         IService<TDocument>,
         ICrudService<TDocument>,
         IHistoryService<TDocument> 
@@ -25,23 +26,17 @@ namespace Alamut.Service
         /// <param name="userResolverService"></param>
         /// <param name="mapper"></param>
         /// <param name="historyRepository"></param>
+        public FullService(IRepository<TDocument> repository)
+        {
+            Repository = repository;
+            _crudService = new CrudService<TDocument>(repository);
+        }
+
         public FullService(IRepository<TDocument> repository,
-            //IMapper mapper,
             IHistoryRepository historyRepository = null,
             IUserResolverService userResolverService = null)
         {
-            Repository = repository;
-            //Mapper = mapper;
-
-            if (historyRepository != null && userResolverService != null)
-            {
-                _crudService = _historyService = new HistoryService<TDocument>(repository, historyRepository, userResolverService);
-            }
-            else
-            {
-                _crudService = new CrudService<TDocument>(repository);
-            }
-
+            _crudService = _historyService = new HistoryService<TDocument>(repository, historyRepository, userResolverService);
         }
 
         #region IService
