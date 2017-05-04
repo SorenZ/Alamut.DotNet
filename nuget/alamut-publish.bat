@@ -5,3 +5,5 @@ nuget.exe push -Source http://package.samsystems.ir/nuget -ApiKey poshtkohi ..\p
 nuget.exe push -Source http://package.samsystems.ir/nuget -ApiKey poshtkohi ..\packages\Alamut.Service.3.0.2.nupkg
 nuget.exe push -Source http://package.samsystems.ir/nuget -ApiKey poshtkohi ..\packages\Alamut.Utilities.3.0.1.nupkg
 
+
+nuget.exe push -Source http://package.samsystems.ir/nuget -ApiKey poshtkohi ..\packages\Alamut.Data.3.0.1.nupkg
