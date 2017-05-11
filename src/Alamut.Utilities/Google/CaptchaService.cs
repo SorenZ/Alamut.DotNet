@@ -38,7 +38,7 @@ namespace Alamut.Utilities.Google
                         return result.success ? ServiceResult.Okay() : ServiceResult.Error();
                     }
 
-                    return ServiceResult.Error(response.ReasonPhrase, (int) response.StatusCode);
+                    return ServiceResult.Error(response.ReasonPhrase);
                 }
                 catch (Exception ex)
                 {

@@ -43,7 +43,7 @@ namespace Alamut.Service
             var entity = base.Repository.Get(id);
 
             if (entity == null)
-                return ServiceResult.Error("There is no entity with Id : " + id, 404);
+                return ServiceResult.Error("There is no entity with Id : " + id);
 
             return base.Repository.Update(Mapper.Map(model, entity));
 
