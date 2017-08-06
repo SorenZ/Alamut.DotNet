@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Description>upgrade to netstandard in version 3.0.1</Description>
-    <VersionPrefix>3.0.1</VersionPrefix>
+  <PropertyGroup>    
+    <VersionPrefix>3.0.2</VersionPrefix>
     <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard1.5</TargetFramework>
     <AssemblyName>Alamut.Helpers</AssemblyName>
