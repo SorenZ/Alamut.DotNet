@@ -4,10 +4,9 @@
     <Description>upgrade to netstandard in version 3.0.1</Description>
     <VersionPrefix>3.0.2</VersionPrefix>
     <Authors>Soren Zand</Authors>
-    <TargetFramework>netstandard1.5</TargetFramework>
+    <TargetFramework>netstandard1.6</TargetFramework>
     <AssemblyName>Alamut.Data</AssemblyName>
     <PackageId>Alamut.Data</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>

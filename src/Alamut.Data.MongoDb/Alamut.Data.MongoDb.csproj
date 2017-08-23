@@ -4,10 +4,9 @@
     <Description>provide data repository base for mongoDB backend store</Description>
     <VersionPrefix>3.0.2</VersionPrefix>
     <Authors>Soren Zand</Authors>
-    <TargetFramework>netstandard1.5</TargetFramework>
+    <TargetFramework>netstandard1.6</TargetFramework>
     <AssemblyName>Alamut.Data.MongoDb</AssemblyName>
     <PackageId>Alamut.Data.MongoDb</PackageId>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
