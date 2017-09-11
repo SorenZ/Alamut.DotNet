@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>provides utilities for Alamut framework</Description>
-    <VersionPrefix>3.0.2</VersionPrefix>
+    <Description>Provides general utilities for data driven dotnet application.</Description>
+    <VersionPrefix>3.0.3</VersionPrefix>
     <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard1.6</TargetFramework>
     <AssemblyName>Alamut.Utilities</AssemblyName>
@@ -10,21 +10,22 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Alamut.Data\Alamut.Data.csproj" />
-    <ProjectReference Include="..\Alamut.Helpers\Alamut.Helpers.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Localization" Version="1.1.1" />
     <PackageReference Include="AutoMapper" Version="5.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Http" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="1.1.2" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
     <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.0" />
 	  <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alamut.Data\Alamut.Data.csproj" />
+    <ProjectReference Include="..\Alamut.Helpers\Alamut.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

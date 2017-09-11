@@ -9,6 +9,8 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Description>Provides basics helpers for data driven programming in dotnet.</Description>
+    <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
