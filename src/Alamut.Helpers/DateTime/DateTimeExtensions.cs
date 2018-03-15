@@ -30,21 +30,17 @@ namespace Alamut.Helpers.DateTime
         /// <param name="dt"></param>
         /// <returns></returns>
         /// <remarks>http://stackoverflow.com/a/5002582/428061</remarks>
-        public static System.DateTime StartOfMonth(this System.DateTime dt)
-        {
-            var now = System.DateTime.Now;
-            return new System.DateTime(now.Year, now.Month, 1);
-        }
+        public static System.DateTime StartOfMonth(this System.DateTime dt) =>
+            new System.DateTime(dt.Year, dt.Month, 1);
+        
 
         /// <summary>
         /// get datetime of the start of the year
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public static System.DateTime StartOfYear(this System.DateTime dt)
-        {
-            var now = System.DateTime.Now;
-            return new System.DateTime(now.Year, 1, 1);
-        }
+        public static System.DateTime StartOfYear(this System.DateTime dt) => 
+             new System.DateTime(dt.Year, 1, 1);
+        
     }
 }
