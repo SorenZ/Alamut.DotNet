@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Alamut.Data.Structure
 {
@@ -11,19 +10,20 @@ namespace Alamut.Data.Structure
     public class ServiceResult 
     {
         public string Message { get; set; }
-
         public bool Succeed { get; set; }
+        public int StatusCode { get; set; }
 
         /// <summary>
         /// return a successful ServiceResult 
         /// </summary>
         /// <returns>successful ServiceResult</returns>
-        public static ServiceResult Okay(string message = "")
+        public static ServiceResult Okay(string message = "", int statusCode = 200)
         {
             return new ServiceResult
             {
                 Succeed = true,
                 Message = message,
+                StatusCode = statusCode
             };
         }
 
@@ -32,13 +32,15 @@ namespace Alamut.Data.Structure
         /// return a ServiceResult with error status and error message
         /// </summary>
         /// <param name="message">error message</param>
+        /// <param name="statusCode"></param>
         /// <returns>Error ServiceResult</returns>
-        public static ServiceResult Error(string message = "")
+        public static ServiceResult Error(string message = "",int statusCode = 500)
         {
             return new ServiceResult
             {
                 Succeed = false,
                 Message = message,
+                StatusCode = statusCode
             };
         }
 
@@ -47,30 +49,18 @@ namespace Alamut.Data.Structure
         /// most inmportant exception included in error message
         /// </summary>
         /// <param name="ex">the exception</param>
+        /// <param name="statusCode"></param>
         /// <returns>Error ServiceResult</returns>
-        public static ServiceResult Exception(Exception ex)
+        public static ServiceResult Exception(Exception ex,int statusCode = 500)
         {
             return new ServiceResult
             {
                 Succeed = false,
-                Message = ex.GetBaseException().Message,
+                Message = ex.ToString(),
+                StatusCode = statusCode
             };
         }
-
-        /// <summary>
-        /// return a ServiceResult from validationResult 
-        ///     that contains validation message in JSON fomat.
-        /// </summary>
-        /// <param name="fieldMessages">List of { propertyName, validationMessage }</param>
-        /// <returns></returns>
-        public static dynamic ValidationFailed(Dictionary<string, string> fieldMessages)
-        {
-            return new
-            {
-                Succeed = false,
-                Message = fieldMessages
-            };
-        }
+        
     }
 
     /// <summary>
@@ -87,14 +77,16 @@ namespace Alamut.Data.Structure
         /// </summary>
         /// <param name="data">return data</param>
         /// <param name="message">the result message</param>
+        /// <param name="statusCode"></param>
         /// <returns>successful ServiceResult</returns>
-        public static ServiceResult<T> Okay(T data, string message = "")
+        public static ServiceResult<T> Okay(T data, string message = "", int statusCode = 200)
         {
             return new ServiceResult<T>
             {
                 Succeed = true,
                 Message = message,
                 Data = data,
+                StatusCode = statusCode
             };
         }
 
@@ -102,13 +94,15 @@ namespace Alamut.Data.Structure
         /// returns a typed ServiceResult with an error
         /// </summary>
         /// <param name="message">error message</param>
+        /// <param name="statusCode"></param>
         /// <returns>error ServiceResult</returns>
-        public new static ServiceResult<T> Error(string message)
+        public new static ServiceResult<T> Error(string message,int statusCode = 500)
         {
             return new ServiceResult<T>
             {
                 Succeed = false,
                 Message = message,
+                StatusCode = statusCode
             };
         }
 
@@ -117,13 +111,15 @@ namespace Alamut.Data.Structure
         /// most inmportant exception included in error message
         /// </summary>
         /// <param name="ex">the exception</param>
+        /// <param name="statusCode"></param>
         /// <returns>Error ServiceResult</returns>
-        public new static ServiceResult<T> Exception(Exception ex)
+        public new static ServiceResult<T> Exception(Exception ex,int statusCode = 500)
         {
             return new ServiceResult<T>
             {
                 Succeed = false,
-                Message = ex.GetBaseException().Message
+                Message = ex.ToString(),
+                StatusCode = statusCode
             };
         }
     }
