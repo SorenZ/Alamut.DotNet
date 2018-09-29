@@ -3,14 +3,14 @@
 namespace Alamut.Data.Entity
 {
 
-    /// <summary>
-    /// provide base interface of an entity
-    /// it's required for work with repository 
-    /// Id is mandetory
-    /// the type of Id is string
-    /// </summary>
-    public interface IEntity : IIdBased //, IEntity<string>
-    { }
+    ///// <summary>
+    ///// provide base interface of an entity
+    ///// it's required for work with repository 
+    ///// Id is mandetory
+    ///// the type of Id is string
+    ///// </summary>
+    //public interface IEntity : IIdBased //, IEntity<string>
+    //{ }
 
     /// <summary>
     /// provide base interface of an entity
@@ -22,4 +22,7 @@ namespace Alamut.Data.Entity
     {
         TKey Id { get; set; }
     }
+
+    public interface IEntity : IEntity<int>
+    { }
 }

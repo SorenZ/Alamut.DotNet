@@ -12,35 +12,39 @@ using System.Reflection;
 
 namespace Alamut.Data.Sql.EF.Repositories
 {
-    public class Repository<TEntity> : QueryRepository<TEntity>,
-        IRepository<TEntity>
-        where TEntity : class, IEntity, new()
+    public class Repository<TEntity,TKey> : QueryRepository<TEntity,TKey>,
+        IRepository<TEntity,TKey>
+        where TEntity : class, IEntity<TKey>, new()
+
     {
         public Repository(DbContext context) : base(context)
         { }
 
-        public virtual ServiceResult<string> Create(TEntity entity)
+        public virtual ServiceResult<TKey> Create(TEntity entity, bool commit = true)
         {
             try
             {
                 base.DbSet.Add(entity);
-                var item = base.Context.SaveChanges();
-                //return ServiceResult<string>.Okay(entity.Id, $"{item} item successfully created.");
-                return ServiceResult<string>.Okay(Messages.ItemCreated);
+                
+                if(commit)
+                    { var item = base.Context.SaveChanges(); }
+
+                return ServiceResult<TKey>.Okay(entity.Id,Messages.ItemCreated);
             }
             catch (Exception ex)
             {
-                return ServiceResult<string>.Exception(ex);
+                return ServiceResult<TKey>.Exception(ex);
             }
         }
 
-        public virtual ServiceResult AddRange(IEnumerable<TEntity> list)
+        public virtual ServiceResult AddRange(IEnumerable<TEntity> list, bool commit = true)
         {
             try
             {
                 base.DbSet.AddRange(list);
-                var item = base.Context.SaveChanges();
-                //return ServiceResult.Okay($"{item} item(s) successfully created.");
+                if(commit)
+                    { var item = base.Context.SaveChanges(); }
+
                 return ServiceResult.Okay(Messages.ItemsCreated);
             }
             catch (Exception ex)
@@ -49,7 +53,7 @@ namespace Alamut.Data.Sql.EF.Repositories
             }
         }
 
-        public virtual ServiceResult Update(TEntity entity)
+        public virtual ServiceResult Update(TEntity entity, bool commit = true)
         {
             var entry = base.Context.Entry(entity);
 
@@ -60,9 +64,10 @@ namespace Alamut.Data.Sql.EF.Repositories
 
             try
             {
-                var item = base.Context.SaveChanges();
+                if(commit)
+                    { var item = base.Context.SaveChanges(); }
+
                 return ServiceResult.Okay(Messages.ItemUpdated);
-                //return ServiceResult.Okay($"{item} item successfully updated.");
             }
             catch (Exception ex)
             {
@@ -70,11 +75,13 @@ namespace Alamut.Data.Sql.EF.Repositories
             }
         }
 
-        public virtual ServiceResult UpdateOne<TField>(string id, Expression<Func<TEntity, TField>> memberExpression, TField value)
+        public virtual ServiceResult UpdateOne<TField>(TKey id, 
+            Expression<Func<TEntity, TField>> memberExpression, 
+            TField value)
         {
-            var entity = base.DbSet.FirstOrDefault(q => q.Id == id);
+            var entity = base.DbSet.FirstOrDefault(q => q.Id.Equals(id));
             if (entity == null)
-               return ServiceResult.Error($"there is no item in {typeof(TEntity).Name} with id : {id}");
+                return ServiceResult.Error($"there is no item in {typeof(TEntity).Name} with id : {id}");
 
             try
             {
@@ -90,7 +97,9 @@ namespace Alamut.Data.Sql.EF.Repositories
             }
         }
 
-        public virtual ServiceResult UpdateOne<TFilter, TField>(Expression<Func<TEntity, bool>> filterExpression, Expression<Func<TEntity, TField>> memberExpression, TField value)
+        public virtual ServiceResult UpdateOne<TFilter, TField>(Expression<Func<TEntity, bool>> filterExpression, 
+            Expression<Func<TEntity, TField>> memberExpression, 
+            TField value)
         {
             var entity = base.DbSet.FirstOrDefault(filterExpression);
             if (entity == null)
@@ -110,9 +119,10 @@ namespace Alamut.Data.Sql.EF.Repositories
             }
         }
 
-        public virtual ServiceResult GenericUpdate(string id, Dictionary<string, dynamic> fieldset)
+        public virtual ServiceResult GenericUpdate(TKey id, 
+            Dictionary<string, dynamic> fieldset)
         {
-            var entity = base.DbSet.FirstOrDefault(q => q.Id == id);
+            var entity = base.DbSet.FirstOrDefault(q => q.Id.Equals(id));
             if (entity == null)
                 return ServiceResult.Error($"there is no item in {typeof(TEntity).Name} with id : {id}");
 
@@ -132,17 +142,17 @@ namespace Alamut.Data.Sql.EF.Repositories
             }
         }
 
-        public virtual ServiceResult AddToList<TValue>(string id, Expression<Func<TEntity, IEnumerable<TValue>>> memberExpression, TValue value)
+        public virtual ServiceResult AddToList<TValue>(TKey id, Expression<Func<TEntity, IEnumerable<TValue>>> memberExpression, TValue value)
         {
             throw new NotImplementedException("Sql Repository doesn't support this method");
         }
 
-        public virtual ServiceResult RemoveFromList<TValue>(string id, Expression<Func<TEntity, IEnumerable<TValue>>> memberExpression, TValue value)
+        public virtual ServiceResult RemoveFromList<TValue>(TKey id, Expression<Func<TEntity, IEnumerable<TValue>>> memberExpression, TValue value)
         {
             throw new NotImplementedException("Sql Repository doesn't support this method");
         }
 
-        public virtual ServiceResult Delete(string id)
+        public virtual ServiceResult Delete(TKey id, bool commit = true)
         {
             try
             {
@@ -150,12 +160,13 @@ namespace Alamut.Data.Sql.EF.Repositories
                 //var rows = base.Context.Database.ExecuteSqlCommand(query, id);
                 //return ServiceResult.Okay($"{rows} item(s) successfully deleted.");
 
-                var entity = base.DbSet.FirstOrDefault(q => q.Id == id);
+                var entity = base.DbSet.FirstOrDefault(q => q.Id.Equals(id));
                 if (entity == null)
                     return ServiceResult.Error($"there is no item in {typeof (TEntity).Name} with id : {id}");
 
                 base.DbSet.Remove(entity);
-                var rows = base.Context.SaveChanges();
+                if(commit)
+                    { var item = base.Context.SaveChanges(); }
 
                 return ServiceResult.Okay(Messages.ItemDeleted);
                 //return ServiceResult.Okay($"{rows} item(s) successfully deleted.");
@@ -167,14 +178,16 @@ namespace Alamut.Data.Sql.EF.Repositories
             }
         }
 
-        public virtual ServiceResult DeleteMany(Expression<Func<TEntity, bool>> predicate)
+        public virtual ServiceResult DeleteMany(Expression<Func<TEntity, bool>> predicate, 
+            bool commit = true)
         {
             try
             {
                 var entities = base.DbSet.Where(predicate);
                 base.DbSet.RemoveRange(entities);
 
-                var rows = base.Context.SaveChanges();
+                if(commit)
+                    { var item = base.Context.SaveChanges(); }
 
                 return ServiceResult.Okay(Messages.ItemDeleted);
                 //return ServiceResult.Okay($"{rows} item(s) successfully deleted.");

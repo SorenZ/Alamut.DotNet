@@ -1,128 +1,128 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using Alamut.Data.Entity;
-using Alamut.Data.Repository;
-using Alamut.Data.Service;
-using Alamut.Data.Structure;
-using Alamut.Utilities.Http;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq.Expressions;
+//using Alamut.Data.Entity;
+//using Alamut.Data.Repository;
+//using Alamut.Data.Service;
+//using Alamut.Data.Structure;
+//using Alamut.Utilities.Http;
 
-namespace Alamut.Service
-{
-    [Obsolete("use HistoryService instead")]
-    public class FullService<TDocument> : 
-        IService<TDocument>,
-        ICrudService<TDocument>,
-        IHistoryService<TDocument> 
-        where TDocument : IEntity
-    {
-        private readonly CrudService<TDocument> _crudService;
-        private readonly HistoryService<TDocument> _historyService;
+//namespace Alamut.Service
+//{
+//    [Obsolete("use HistoryService instead")]
+//    public class FullService<TDocument> : 
+//        IService<TDocument>,
+//        ICrudService<TDocument>,
+//        IHistoryService<TDocument> 
+//        where TDocument : IEntity
+//    {
+//        private readonly CrudService<TDocument> _crudService;
+//        private readonly HistoryService<TDocument> _historyService;
 
-        /// <summary>
-        /// create full service with history supported
-        /// </summary>
-        /// <param name="repository"></param>
-        /// <param name="userResolverService"></param>
-        /// <param name="mapper"></param>
-        /// <param name="historyRepository"></param>
-        public FullService(IRepository<TDocument> repository)
-        {
-            Repository = repository;
-            _crudService = new CrudService<TDocument>(repository);
-        }
+//        /// <summary>
+//        /// create full service with history supported
+//        /// </summary>
+//        /// <param name="repository"></param>
+//        /// <param name="userResolverService"></param>
+//        /// <param name="mapper"></param>
+//        /// <param name="historyRepository"></param>
+//        public FullService(IRepository<TDocument> repository)
+//        {
+//            Repository = repository;
+//            _crudService = new CrudService<TDocument>(repository);
+//        }
 
-        public FullService(IRepository<TDocument> repository,
-            IHistoryRepository historyRepository = null,
-            IUserResolverService userResolverService = null)
-        {
-            _crudService = _historyService = new HistoryService<TDocument>(repository, historyRepository, userResolverService);
-        }
+//        public FullService(IRepository<TDocument> repository,
+//            //IHistoryRepository historyRepository = null,
+//            IUserResolverService userResolverService = null)
+//        {
+//            _crudService = _historyService = new HistoryService<TDocument>(repository, userResolverService);
+//        }
 
-        #region IService
+//        #region IService
 
-        public IQueryRepository<TDocument> ReadOnly => this.Repository;
+//        public IQueryRepository<TDocument> ReadOnly => this.Repository;
 
-        protected IRepository<TDocument> Repository { get; }
+//        protected IRepository<TDocument> Repository { get; }
 
-        #endregion
+//        #endregion
 
-        #region ICrudService
+//        #region ICrudService
 
-        //protected IMapper Mapper { get; }
+//        //protected IMapper Mapper { get; }
 
-        public ServiceResult<string> Create<TModel>(TModel model)
-        {
-            return _crudService.Create(model);
-        }
+//        public ServiceResult<string> Create<TModel>(TModel model)
+//        {
+//            return _crudService.Create(model);
+//        }
 
-        public ServiceResult Update<TModel>(string id, TModel model)
-        {
-            return _crudService.Update(id, model);
-        }
+//        public ServiceResult Update<TModel>(string id, TModel model)
+//        {
+//            return _crudService.Update(id, model);
+//        }
 
-        public ServiceResult UpdateOne<TField>(string id, Expression<Func<TDocument, TField>> memberExpression, TField value)
-        {
-            return _crudService.UpdateOne(id, memberExpression, value);
-        }
+//        public ServiceResult UpdateOne<TField>(string id, Expression<Func<TDocument, TField>> memberExpression, TField value)
+//        {
+//            return _crudService.UpdateOne(id, memberExpression, value);
+//        }
 
-        public ServiceResult Delete(string id)
-        {
-            return _crudService.Delete(id);
-        }
+//        public ServiceResult Delete(string id)
+//        {
+//            return _crudService.Delete(id);
+//        }
 
-        public TResult Get<TResult>(string id)
-        {
-            return _crudService.Get<TResult>(id);
-        }
+//        public TResult Get<TResult>(string id)
+//        {
+//            return _crudService.Get<TResult>(id);
+//        }
 
-        public List<TResult> GetMany<TResult>(IEnumerable<string> ids)
-        {
-            return _crudService.GetMany<TResult>(ids);
-        }
+//        public List<TResult> GetMany<TResult>(IEnumerable<string> ids)
+//        {
+//            return _crudService.GetMany<TResult>(ids);
+//        }
 
-        public List<TResult> GetMany<TResult>(Expression<Func<TDocument, bool>> predicate)
-        {
-            return _crudService.GetMany<TResult>(predicate);
-        }
+//        public List<TResult> GetMany<TResult>(Expression<Func<TDocument, bool>> predicate)
+//        {
+//            return _crudService.GetMany<TResult>(predicate);
+//        }
 
-        #endregion
+//        #endregion
 
-        #region IHistoryService
+//        //#region IHistoryService
 
-        public TModel GetHistoryValue<TModel>(string historyId) where TModel : class
-        {
-            if (_historyService == null)
-                throw new NullReferenceException(nameof(_historyService));
+//        //public TModel GetHistoryValue<TModel>(string historyId) where TModel : class
+//        //{
+//        //    if (_historyService == null)
+//        //        throw new NullReferenceException(nameof(_historyService));
 
-            return _historyService.GetHistoryValue<TModel>(historyId);
-        }
+//        //    return _historyService.GetHistoryValue<TModel>(historyId);
+//        //}
 
-        public dynamic GetHistoryValue(string historyId)
-        {
-            if (_historyService == null)
-                throw new NullReferenceException(nameof(_historyService));
+//        //public dynamic GetHistoryValue(string historyId)
+//        //{
+//        //    if (_historyService == null)
+//        //        throw new NullReferenceException(nameof(_historyService));
 
-            return _historyService.GetHistoryValue(historyId);
-        }
+//        //    return _historyService.GetHistoryValue(historyId);
+//        //}
 
-        public List<BaseHistory> GetHistories<TModel>(string entityId)
-        {
-            if (_historyService == null)
-                throw new NullReferenceException(nameof(_historyService));
+//        //public List<BaseHistory> GetHistories<TModel>(string entityId)
+//        //{
+//        //    if (_historyService == null)
+//        //        throw new NullReferenceException(nameof(_historyService));
 
-            return _historyService.GetHistories<TModel>(entityId);
-        }
+//        //    return _historyService.GetHistories<TModel>(entityId);
+//        //}
 
-        public List<BaseHistory> GetHistories(string entityId)
-        {
-            if (_historyService == null)
-                throw new NullReferenceException(nameof(_historyService));
+//        //public List<BaseHistory> GetHistories(string entityId)
+//        //{
+//        //    if (_historyService == null)
+//        //        throw new NullReferenceException(nameof(_historyService));
 
-            return _historyService.GetHistories(entityId);
-        }
+//        //    return _historyService.GetHistories(entityId);
+//        //}
 
-        #endregion
+//        //#endregion
 
-    }
-}
+//    }
+//}

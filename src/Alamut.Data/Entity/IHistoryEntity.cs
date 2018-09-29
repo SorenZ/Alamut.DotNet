@@ -6,7 +6,7 @@ namespace Alamut.Data.Entity
     /// provide a contract of requirements for history
     /// </summary>
     public interface IHistoryEntity : 
-        IEntity,
+        IEntity<string>,
         IUserEntity
         
     {

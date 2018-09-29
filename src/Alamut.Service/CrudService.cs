@@ -21,7 +21,7 @@ namespace Alamut.Service
 
 
         public virtual ServiceResult<string> Create<TModel>(TModel model)
-        {
+        { 
             var entity = Mapper.Map<TDocument>(model);
             
             return base.Repository.Create(entity);

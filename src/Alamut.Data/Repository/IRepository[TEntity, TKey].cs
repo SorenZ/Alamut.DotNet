@@ -6,36 +6,41 @@ using Alamut.Data.Structure;
 
 namespace Alamut.Data.Repository
 {
+    /// <inheritdoc />
     /// <summary>
     /// represend complete repository methods to query and manipulate the database
     /// </summary>
-    /// <typeparam name="TDocument"></typeparam>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
     /// <remarks>
     /// it's recommended to use this repo in Service layer not UI
     /// </remarks>
-    public interface IRepository<TDocument> : IQueryRepository<TDocument> 
-        where TDocument : IEntity
+    public interface IRepository<TEntity,TKey> : IQueryRepository<TEntity,TKey> 
+        where TEntity : IEntity<TKey>
     {
         /// <summary>
         /// create an item 
         /// and commit into database.
         /// </summary>
         /// <param name="entity"></param>
-        ServiceResult<string> Create(TDocument entity);
+        /// <param name="commit">save changes into database</param>
+        ServiceResult<TKey> Create(TEntity entity, bool commit = true);
 
         /// <summary>
         /// add list of item into database
         /// and commit into database.
         /// </summary>
         /// <param name="list"></param>
-        ServiceResult AddRange(IEnumerable<TDocument> list);
+        /// <param name="commit"></param>
+        ServiceResult AddRange(IEnumerable<TEntity> list, bool commit = true);
 
         /// <summary>
         /// update item total value
         /// and commit into database.
         /// </summary>
         /// <param name="entity"></param>
-        ServiceResult Update(TDocument entity);
+        /// <param name="commit"></param>
+        ServiceResult Update(TEntity entity, bool commit = true);
 
         /// <summary>
         /// update an item (one field) by expression member selector by id
@@ -48,8 +53,8 @@ namespace Alamut.Data.Repository
         /// <remarks>
         /// Even if multiple documents match the filter, only one will be updated because we used UpdateOne
         /// </remarks>
-        ServiceResult UpdateOne<TField>(string id, 
-            Expression<Func<TDocument, TField>> memberExpression, 
+        ServiceResult UpdateOne<TField>(TKey id, 
+            Expression<Func<TEntity, TField>> memberExpression, 
             TField value);
 
         /// <summary>
@@ -64,15 +69,15 @@ namespace Alamut.Data.Repository
         /// <remarks>
         /// Even if multiple documents match the filter, only one will be updated because we used UpdateOne
         /// </remarks>
-        ServiceResult UpdateOne<TFilter, TField>(Expression<Func<TDocument, bool>> filterExpression, 
-            Expression<Func<TDocument, TField>> memberExpression, TField value);
+        ServiceResult UpdateOne<TFilter, TField>(Expression<Func<TEntity, bool>> filterExpression, 
+            Expression<Func<TEntity, TField>> memberExpression, TField value);
 
         /// <summary>
         /// update fieldset in the databse by provided id
         /// </summary>
         /// <param name="id"></param>
         /// <param name="fieldset"></param>
-        ServiceResult GenericUpdate(string id, Dictionary<string, dynamic> fieldset);
+        ServiceResult GenericUpdate(TKey id, Dictionary<string, dynamic> fieldset);
 
         /// <summary>
         /// add an item to a list (if not exist)
@@ -81,7 +86,9 @@ namespace Alamut.Data.Repository
         /// <param name="id"></param>
         /// <param name="memberExpression"></param>
         /// <param name="value"></param>
-        ServiceResult AddToList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value);
+        ServiceResult AddToList<TValue>(TKey id, 
+            Expression<Func<TEntity, IEnumerable<TValue>>> memberExpression, 
+            TValue value);
 
         /// <summary>
         /// remove an item from a list (all item if same)
@@ -90,18 +97,23 @@ namespace Alamut.Data.Repository
         /// <param name="id"></param>
         /// <param name="memberExpression"></param>
         /// <param name="value"></param>
-        ServiceResult RemoveFromList<TValue>(string id, Expression<Func<TDocument, IEnumerable<TValue>>> memberExpression, TValue value);
+        ServiceResult RemoveFromList<TValue>(TKey id, 
+            Expression<Func<TEntity, IEnumerable<TValue>>> memberExpression, 
+            TValue value);
 
         /// <summary>
         /// Deletes an item by id.
         /// </summary>
         /// <param name="id"></param>
-        ServiceResult Delete(string id);
+        /// <param name="commit"></param>
+        ServiceResult Delete(TKey id, bool commit = true);
 
         /// <summary>
         /// Deletes multiple documents.
         /// </summary>
         /// <param name="predicate">represent expression to filter delete</param>
-        ServiceResult DeleteMany(Expression<Func<TDocument, bool>> predicate);
+        /// <param name="commit"></param>
+        ServiceResult DeleteMany(Expression<Func<TEntity, bool>> predicate
+            , bool commit = true);
     }
 }
