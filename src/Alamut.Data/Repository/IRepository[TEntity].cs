@@ -2,7 +2,8 @@
 
 namespace Alamut.Data.Repository
 {
-    public interface IRepository<TEntity> : IRepository<TEntity, int> 
+    public interface IRepository<TEntity> : IRepository<TEntity, int> ,
+        IQueryRepository<TEntity>
         where TEntity : IEntity
     { }
 }

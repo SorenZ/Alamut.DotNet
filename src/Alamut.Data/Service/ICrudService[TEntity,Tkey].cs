@@ -6,12 +6,14 @@ using Alamut.Data.Structure;
 
 namespace Alamut.Data.Service
 {
+    /// <inheritdoc />
     /// <summary>
     /// provide base CRUD service contract 
     /// </summary>
-    /// <typeparam name="TDocument"></typeparam>
-    public interface ICrudService<TDocument> : IService<TDocument> 
-        where TDocument : IEntity 
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
+    public interface ICrudService<TEntity, TKey> : IService<TEntity, TKey> 
+        where TEntity : IEntity<TKey>
     {
         /// <summary>
         /// create an item by mapping model into entity and 
@@ -20,7 +22,7 @@ namespace Alamut.Data.Service
         /// <typeparam name="TModel"></typeparam>
         /// <param name="model"></param>
         /// <returns></returns>
-        ServiceResult<string> Create<TModel>(TModel model);
+        ServiceResult<TKey> Create<TModel>(TModel model);
 
         /// <summary>
         /// update an item by id
@@ -31,7 +33,7 @@ namespace Alamut.Data.Service
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        ServiceResult Update<TModel>(string id, TModel model);
+        ServiceResult Update<TModel>(TKey id, TModel model);
 
 
         /// <summary>
@@ -44,8 +46,8 @@ namespace Alamut.Data.Service
         /// <remarks>
         /// Even if multiple documents match the filter, only one will be updated because we used UpdateOne
         /// </remarks>
-        ServiceResult UpdateOne<TField>(string id,
-            Expression<Func<TDocument, TField>> memberExpression,
+        ServiceResult UpdateOne<TField>(TKey id,
+            Expression<Func<TEntity, TField>> memberExpression,
             TField value);
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Alamut.Data.Service
         /// </summary>
         /// <param name="id">entity or document Id</param>
         /// <returns></returns>
-        ServiceResult Delete(string id);
+        ServiceResult Delete(TKey id);
 
         /// <summary>
         /// get single result and map to demanded type
@@ -62,7 +64,7 @@ namespace Alamut.Data.Service
         /// <param name="id"></param>
         /// <returns></returns>
         /// <remarks>TResult should already mapped to current Entity</remarks>
-        TResult Get<TResult>(string id);
+        TResult Get<TResult>(TKey id);
 
         /// <summary>
         /// get list of entity and map to demanded type
@@ -72,7 +74,7 @@ namespace Alamut.Data.Service
         /// <param name="ids">entity.id</param>
         /// <returns></returns>
         /// <remarks>TResult should already mapped to current Entity</remarks>
-        List<TResult> GetMany<TResult>(IEnumerable<string> ids);
+        List<TResult> GetMany<TResult>(IEnumerable<TKey> ids);
 
         /// <summary>
         /// get list of entity and map to demanded type
@@ -82,6 +84,6 @@ namespace Alamut.Data.Service
         /// <param name="predicate"></param>
         /// <returns></returns>
         /// <remarks>TResult should already mapped to current Entity</remarks>
-        List<TResult> GetMany<TResult>(Expression<Func<TDocument, bool>> predicate);
+        List<TResult> GetMany<TResult>(Expression<Func<TEntity, bool>> predicate);
     }
 }
