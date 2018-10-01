@@ -8,7 +8,7 @@ namespace Alamut.Service
         ICrudService<TEntity>
         where TEntity : IEntity
     {
-        public CrudService(IRepository<TEntity, int> repository) : base(repository)
+        public CrudService(IRepository<TEntity> repository) : base(repository)
         { }
     }
 }
