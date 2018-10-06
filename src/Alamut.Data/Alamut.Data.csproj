@@ -12,6 +12,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <Version>3.0.4</Version>
     <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
+    <PackageIconUrl>https://sorenz.github.io/alamut-256.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
