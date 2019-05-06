@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace Alamut.Utilities.AspNet.Middlewares
+namespace Alamut.Utilities.AspNet.TextMiddleware
 {
     public class TextValidatorMiddleware
     {
