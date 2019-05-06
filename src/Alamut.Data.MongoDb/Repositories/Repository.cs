@@ -12,8 +12,8 @@ using MongoDB.Driver;
 namespace Alamut.Data.MongoDb.Repositories
 {
     public class Repository<TDocument> : QueryRepository<TDocument>,
-        IRepository<TDocument> 
-        where TDocument : class, IEntity
+        IRepository<TDocument,string> 
+        where TDocument : class, IEntity<string>
     {
         public Repository(IMongoDatabase database) : base(database)
         { }
@@ -64,6 +64,21 @@ namespace Alamut.Data.MongoDb.Repositories
             {
                 return ServiceResult.Exception(ex);
             }
+        }
+
+        public ServiceResult<string> Create(TDocument entity, bool commit = true)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServiceResult AddRange(IEnumerable<TDocument> list, bool commit = true)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServiceResult Update(TDocument entity, bool commit = true)
+        {
+            throw new NotImplementedException();
         }
 
         public virtual ServiceResult UpdateOne<TField>(string id, Expression<Func<TDocument, TField>> memberExpression, TField value)
@@ -188,6 +203,16 @@ namespace Alamut.Data.MongoDb.Repositories
             {
                 return ServiceResult.Exception(ex);
             }
+        }
+
+        public ServiceResult Delete(string id, bool commit = true)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServiceResult DeleteMany(Expression<Func<TDocument, bool>> predicate, bool commit = true)
+        {
+            throw new NotImplementedException();
         }
 
         public virtual ServiceResult Delete(string id)

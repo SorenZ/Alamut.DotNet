@@ -10,7 +10,7 @@ using MongoDB.Driver;
 
 namespace Alamut.Data.MongoDb.Repositories
 {
-    public class QueryRepository<TDocument> : IQueryRepository<TDocument> where TDocument : class, IEntity
+    public class QueryRepository<TDocument> : IQueryRepository<TDocument,string> where TDocument : class, IEntity<string>
     {
         protected readonly IMongoCollection<TDocument> Collection;
         
@@ -40,6 +40,16 @@ namespace Alamut.Data.MongoDb.Repositories
             //return Collection.Find(predicate).FirstOrDefault();
         }
 
+        public TResult Get<TResult>(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TResult Get<TResult>(Expression<Func<TDocument, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual TResult Get<TResult>(string id, Expression<Func<TDocument, TResult>> projection)
         {
             return Collection.Find(m => m.Id == id)
@@ -60,6 +70,11 @@ namespace Alamut.Data.MongoDb.Repositories
             return Collection.Find(new BsonDocument()).ToList();
         }
 
+        public List<TResult> GetAll<TResult>()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual List<TResult> GetAll<TResult>(Expression<Func<TDocument, TResult>> projection)
         {
             return Collection.Find(new BsonDocument())
@@ -75,6 +90,16 @@ namespace Alamut.Data.MongoDb.Repositories
         public virtual List<TDocument> GetMany(IEnumerable<string> ids)
         {
             return Collection.Find(q => ids.Contains(q.Id)).ToList();
+        }
+
+        public List<TResult> GetMany<TResult>(Expression<Func<TDocument, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TResult> GetMany<TResult>(IEnumerable<string> ids)
+        {
+            throw new NotImplementedException();
         }
 
         public virtual List<TResult> GetMany<TResult>(Expression<Func<TDocument, bool>> predicate,
