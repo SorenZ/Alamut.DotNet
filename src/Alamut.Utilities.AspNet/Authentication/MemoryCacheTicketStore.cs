@@ -43,8 +43,8 @@ namespace Alamut.Utilities.AspNet.Authentication
 
         public Task<AuthenticationTicket> RetrieveAsync(string key)
         {
-            AuthenticationTicket ticket;
-            _cache.TryGetValue(key, out ticket);
+            _cache.TryGetValue(key, out AuthenticationTicket ticket);
+
             return Task.FromResult(ticket);
         }
 

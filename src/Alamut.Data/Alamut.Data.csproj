@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description></Description>
     <VersionPrefix>3.0.4</VersionPrefix>
-    <Authors>Soren Zand</Authors>
+    <Authors>Hamed ZVand</Authors>
     <TargetFramework>netstandard1.6</TargetFramework>
     <AssemblyName>Alamut.Data</AssemblyName>
     <PackageId>Alamut.Data</PackageId>

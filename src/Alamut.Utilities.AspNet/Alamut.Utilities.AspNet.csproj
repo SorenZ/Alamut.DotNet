@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>3.1.0</Version>
+    <Version>3.1.1</Version>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>Soren Zand</Authors>
+    <Authors>Hamed ZVand</Authors>
     <Product>Alamut</Product>
     <Description>Utilities and Extensions for AspNet Core</Description>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
@@ -12,6 +12,7 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="Alamut.Data" Version="3.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.*" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.*" />
@@ -20,10 +21,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.0.*" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <!--<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.*" />-->
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Alamut.Data\Alamut.Data.csproj" />
   </ItemGroup>
   
   
