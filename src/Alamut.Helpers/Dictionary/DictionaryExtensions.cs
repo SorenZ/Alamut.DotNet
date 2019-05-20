@@ -18,8 +18,7 @@ namespace Alamut.Helpers.Dictionary
             return dictionary.TryGetValue(key, out value) ? value : defaultValue;
         }
 
-        public static TValue GetValueOrDefault<TKey, TValue>
-        (this IDictionary<TKey, TValue> dictionary,
+        public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
             TKey key,
             Func<TValue> defaultValueProvider)
         {
@@ -27,6 +26,21 @@ namespace Alamut.Helpers.Dictionary
             return dictionary.TryGetValue(key, out value)
                 ? value
                 : defaultValueProvider();
+        }
+
+        /// <summary>
+        /// update the source dic or insert new fields from provided information by newOne
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="newOne"></param>
+        public static void Upsert<TKey, TValue>(this Dictionary<TKey, TValue> source, Dictionary<TKey, TValue> newOne)
+        {
+            foreach (var item in newOne)
+            {
+                source[item.Key] = item.Value;
+            }
         }
     }
 }
