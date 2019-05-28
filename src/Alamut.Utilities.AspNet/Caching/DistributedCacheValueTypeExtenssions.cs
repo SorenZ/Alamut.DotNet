@@ -91,7 +91,7 @@ namespace Alamut.Utilities.AspNet.Caching
             }
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, bool value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, bool value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -102,10 +102,10 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, char value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, char value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -116,10 +116,10 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, decimal value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, decimal value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -130,10 +130,10 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, double value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, double value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -144,10 +144,10 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, short value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, short value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -158,10 +158,10 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, int value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, int value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -172,10 +172,10 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, long value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, long value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -186,10 +186,10 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, float value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, float value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -200,10 +200,10 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
 
-        public static Task SetAsync(this IDistributedCache cache, string key, string value,
+        public static async Task SetAsync(this IDistributedCache cache, string key, string value,
             DistributedCacheEntryOptions options)
         {
             byte[] bytes;
@@ -214,7 +214,7 @@ namespace Alamut.Utilities.AspNet.Caching
                 bytes = memoryStream.ToArray();
             }
 
-            return cache.SetAsync(key, bytes, options);
+            await cache.SetAsync(key, bytes, options);
         }
     }
 }
