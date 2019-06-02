@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Utilities", "src\Ala
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Utilities.AspNet", "src\Alamut.Utilities.AspNet\Alamut.Utilities.AspNet.csproj", "{A7805647-8961-4018-A948-EC885A0CDEE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alamut.Data.Sql.EF.Test", "test\Alamut.Data.Sql.EF.Test\Alamut.Data.Sql.EF.Test.csproj", "{2EB1CE6A-A689-44D8-9DCD-8AF1A2DB6FA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{A7805647-8961-4018-A948-EC885A0CDEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7805647-8961-4018-A948-EC885A0CDEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7805647-8961-4018-A948-EC885A0CDEE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB1CE6A-A689-44D8-9DCD-8AF1A2DB6FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB1CE6A-A689-44D8-9DCD-8AF1A2DB6FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB1CE6A-A689-44D8-9DCD-8AF1A2DB6FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB1CE6A-A689-44D8-9DCD-8AF1A2DB6FA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{B0A2E976-7060-409A-8BB9-BB9E72E7781E} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 		{FA54083B-CF7C-42B2-895D-1CB2E7E541A8} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 		{A7805647-8961-4018-A948-EC885A0CDEE7} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
+		{2EB1CE6A-A689-44D8-9DCD-8AF1A2DB6FA7} = {DEBF0D01-9702-493A-864C-BF856280F281}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22CAA7F6-8246-4BF4-9515-E68BDB92BC63}
