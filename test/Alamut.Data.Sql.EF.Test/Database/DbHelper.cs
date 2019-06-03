@@ -15,15 +15,19 @@ namespace Alamut.Data.Sql.EF.Test.Database
             return context;
         }
 
-        public static void Seed(AppDbContext context)
+        public static Blog Seed_SignleBlog(AppDbContext context)
         {
-            context.Blogs.Add(new Blog
+            Blog entity = new Blog
             {
-                Url = "https://docs.microsoft.com/en-us/ef/core/miscellaneous/testing/in-memory",
+                Url = "https://github.com/SorenZ/Alamut.DotNet",
                 Rating = 5
-            });
+            };
+
+            context.Blogs.Add(entity);
 
             context.SaveChanges();
+
+            return entity;
         }
     }
 

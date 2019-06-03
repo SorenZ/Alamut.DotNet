@@ -27,7 +27,7 @@ namespace Alamut.Service
 
         public virtual ServiceResult Update<TModel>(TKey id, TModel model)
         {
-            var entity = base.Repository.Get(id);
+            var entity = base.Repository.GetById(id);
 
             if (entity == null)
                 return ServiceResult.Error("There is no entity with Id : " + id);

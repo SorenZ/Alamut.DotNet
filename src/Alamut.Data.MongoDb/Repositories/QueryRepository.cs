@@ -26,7 +26,7 @@ namespace Alamut.Data.MongoDb.Repositories
         public virtual IQueryable<TDocument> Queryable => Collection.AsQueryable();
        
 
-        public virtual TDocument Get(string id)
+        public virtual TDocument GetById(string id)
         {
             return Collection.Find(m => m.Id == id).FirstOrDefault();
         }

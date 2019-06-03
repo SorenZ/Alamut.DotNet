@@ -29,7 +29,7 @@ namespace Alamut.Data.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        TEntity Get(TKey id);
+        TEntity GetById(TKey id);
 
         /// <summary>
         /// get an item by predicate

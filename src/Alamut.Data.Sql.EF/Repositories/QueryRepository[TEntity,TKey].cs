@@ -31,7 +31,7 @@ namespace Alamut.Data.Sql.EF.Repositories
         
         public virtual IQueryable<TEntity> Queryable => DbSet.AsNoTracking();
 
-        public virtual TEntity Get(TKey id) 
+        public virtual TEntity GetById(TKey id) 
             => DbSet.FirstOrDefault(q => q.Id.Equals(id));
 
         public virtual TEntity Get(Expression<Func<TEntity, bool>> predicate) =>
