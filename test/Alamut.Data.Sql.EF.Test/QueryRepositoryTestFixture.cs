@@ -6,14 +6,21 @@ namespace Alamut.Data.Sql.EF.Test
 {
     public class QueryRepositoryTestFixture
     {
+        private readonly AppDbContext _context;
+
+        public QueryRepositoryTestFixture()
+        {
+             _context = DbHelper.GetInMemoryInstance();
+        }
+
         [Fact]
         public void Query_GetAll()         
         {
             // arrange 
-            var context = AppDbContext.GetInMemoryInstance(true);
-            AppDbContext.Seed(context);
+            
+            DbHelper.Seed(_context);
 
-            var repository = new QueryRepository<Blog,int>(context);
+            var repository = new QueryRepository<Blog,int>(_context);
 
             // act
             var allItems = repository.GetAll();
