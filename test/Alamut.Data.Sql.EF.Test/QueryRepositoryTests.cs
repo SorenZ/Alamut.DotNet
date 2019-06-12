@@ -39,7 +39,7 @@ namespace Alamut.Data.Sql.EF.Test
             // act
             var allItems = repository.GetAll();
 
-            // var actual = 
+            // var actual 
             Assert.NotNull(allItems);
             Assert.NotEmpty(allItems);
         }
