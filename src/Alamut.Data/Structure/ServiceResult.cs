@@ -7,7 +7,7 @@ namespace Alamut.Data.Structure
     /// It can be used as web service result
     /// </summary>
     /// <remarks>result for void Service</remarks>
-    public class ServiceResult 
+    public class ServiceResult
     {
         public string Message { get; set; }
         public bool Succeed { get; set; }
@@ -34,7 +34,7 @@ namespace Alamut.Data.Structure
         /// <param name="message">error message</param>
         /// <param name="statusCode"></param>
         /// <returns>Error ServiceResult</returns>
-        public static ServiceResult Error(string message = "",int statusCode = 500)
+        public static ServiceResult Error(string message = "", int statusCode = 500)
         {
             return new ServiceResult
             {
@@ -51,7 +51,7 @@ namespace Alamut.Data.Structure
         /// <param name="ex">the exception</param>
         /// <param name="statusCode"></param>
         /// <returns>Error ServiceResult</returns>
-        public static ServiceResult Exception(Exception ex,int statusCode = 500)
+        public static ServiceResult Exception(Exception ex, int statusCode = 500)
         {
             return new ServiceResult
             {
@@ -60,67 +60,24 @@ namespace Alamut.Data.Structure
                 StatusCode = statusCode
             };
         }
-        
-    }
 
-    /// <summary>
-    /// provides a generic data weapper for Service result 
-    /// </summary>
-    /// <typeparam name="T">data type of return</typeparam>
-    /// <remarks>result for not void result</remarks>
-    public class ServiceResult<T> : ServiceResult
-    {
-        public T Data { get; set; }
-
-        /// <summary>
-        /// returns a successful typed ServiceResult
-        /// </summary>
-        /// <param name="data">return data</param>
-        /// <param name="message">the result message</param>
-        /// <param name="statusCode"></param>
-        /// <returns>successful ServiceResult</returns>
-        public static ServiceResult<T> Okay(T data, string message = "", int statusCode = 200)
+        public override bool Equals(object obj)
         {
-            return new ServiceResult<T>
-            {
-                Succeed = true,
-                Message = message,
-                Data = data,
-                StatusCode = statusCode
-            };
+            var sr = obj as ServiceResult;
+
+            if (sr == null)
+            { return false; }
+
+
+            return this.Succeed == sr.Succeed && this.StatusCode == sr.StatusCode;
         }
 
-        /// <summary>
-        /// returns a typed ServiceResult with an error
-        /// </summary>
-        /// <param name="message">error message</param>
-        /// <param name="statusCode"></param>
-        /// <returns>error ServiceResult</returns>
-        public new static ServiceResult<T> Error(string message,int statusCode = 500)
+        public override int GetHashCode()
         {
-            return new ServiceResult<T>
+            unchecked
             {
-                Succeed = false,
-                Message = message,
-                StatusCode = statusCode
-            };
-        }
-
-        /// <summary>
-        /// return a ServiceResult from exception
-        /// most inmportant exception included in error message
-        /// </summary>
-        /// <param name="ex">the exception</param>
-        /// <param name="statusCode"></param>
-        /// <returns>Error ServiceResult</returns>
-        public new static ServiceResult<T> Exception(Exception ex,int statusCode = 500)
-        {
-            return new ServiceResult<T>
-            {
-                Succeed = false,
-                Message = ex.ToString(),
-                StatusCode = statusCode
-            };
+                return Succeed.GetHashCode() + StatusCode;
+            }
         }
     }
 }
