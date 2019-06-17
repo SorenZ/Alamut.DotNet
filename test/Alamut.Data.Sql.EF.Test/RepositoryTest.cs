@@ -34,5 +34,34 @@ namespace Alamut.Data.Sql.EF.Test
             Assert.Equal(expected.Data, actual.Data);
 
         }
+
+        [Fact]
+        public void Repository_AddRange()
+        {
+            // arrange
+            var repository = new Repository<Blog,int>(_context);
+            var entities = new []
+            {
+                new Blog
+            {
+                Url = "https://github.com/SorenZ/Alamut.DotNet",
+                Rating = 5
+            },
+                new Blog
+            {
+                Url = "https://github.com/SorenZ/DataFramework",
+                Rating = 4
+            }
+            };
+            var expected = ServiceResult.Okay(Messages.ItemsCreated);
+
+
+            // act
+            var actual = repository.AddRange(entities,commit:true);
+
+            // assert
+            Assert.Equal(expected, actual);
+
+        }
     }
 }
