@@ -76,7 +76,7 @@ namespace Alamut.Data.Structure
         {
             unchecked
             {
-                return Succeed.GetHashCode() + StatusCode;
+                return Convert.ToInt32(this.Succeed) + this.StatusCode;
             }
         }
     }

@@ -61,5 +61,27 @@ namespace Alamut.Data.Structure
                 StatusCode = statusCode
             };
         }
+
+        public override bool Equals(object obj)
+        {
+            var sr = obj as ServiceResult<T>;
+
+            if(sr == null)
+            { return false;}
+
+            return sr.Data.Equals(this.Data) &&
+                this.Succeed == sr.Succeed && 
+                this.StatusCode == sr.StatusCode;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return Convert.ToInt32(this.Succeed) + 
+                this.StatusCode +
+                this.Data.GetHashCode();
+            }
+        }
     }
 }
