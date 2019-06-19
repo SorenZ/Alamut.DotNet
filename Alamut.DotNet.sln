@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alamut.Data.Sql.EF.Test", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alamut.Data.Test", "test\Alamut.Data.Test\Alamut.Data.Test.csproj", "{E620A9F0-803D-4622-B5F0-892FAB326D98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alamut.Utilities.AspNet.Test", "test\Alamut.Utilities.AspNet.Test\Alamut.Utilities.AspNet.Test.csproj", "{7E8A7B89-9DBC-4E6D-9383-54468558E07B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{E620A9F0-803D-4622-B5F0-892FAB326D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E620A9F0-803D-4622-B5F0-892FAB326D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E620A9F0-803D-4622-B5F0-892FAB326D98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E8A7B89-9DBC-4E6D-9383-54468558E07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E8A7B89-9DBC-4E6D-9383-54468558E07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E8A7B89-9DBC-4E6D-9383-54468558E07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E8A7B89-9DBC-4E6D-9383-54468558E07B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +105,7 @@ Global
 		{A7805647-8961-4018-A948-EC885A0CDEE7} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 		{2EB1CE6A-A689-44D8-9DCD-8AF1A2DB6FA7} = {DEBF0D01-9702-493A-864C-BF856280F281}
 		{E620A9F0-803D-4622-B5F0-892FAB326D98} = {DEBF0D01-9702-493A-864C-BF856280F281}
+		{7E8A7B89-9DBC-4E6D-9383-54468558E07B} = {DEBF0D01-9702-493A-864C-BF856280F281}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22CAA7F6-8246-4BF4-9515-E68BDB92BC63}
