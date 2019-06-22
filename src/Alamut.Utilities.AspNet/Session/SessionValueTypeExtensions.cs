@@ -9,6 +9,20 @@ namespace Alamut.Utilities.AspNet.Session
     /// </summary>
     public static class SessionValueTypeExtensions 
     {
+
+        public static void Set<T>(this ISession session, string key, T value) where T : class
+        {
+            throw new NotImplementedException();
+            // https://stackoverflow.com/questions/4865104/convert-any-object-to-a-byte/4865123
+            // https://stackoverflow.com/questions/1446547/how-to-convert-an-object-to-a-byte-array-in-c-sharp
+        }
+
+        public static void Get<T>(this ISession session, string key)
+        {
+            throw new NotImplementedException();
+            // https://stackoverflow.com/questions/4865104/convert-any-object-to-a-byte/4865123
+        }
+
         /// <summary>
         /// Set the given key and value (only value-type) in the current session
         /// </summary>

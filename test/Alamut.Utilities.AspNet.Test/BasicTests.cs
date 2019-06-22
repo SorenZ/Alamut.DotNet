@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace Alamut.Utilites.AspNet.Test
@@ -15,7 +17,7 @@ namespace Alamut.Utilites.AspNet.Test
         }
 
         [Fact]
-        public async Task BasicTest()
+        public async Task Basic_AspNet_Intergration_Get_Request_Test()
         {
             // arrange 
             var client = _sut.CreateDefaultClient();
@@ -26,8 +28,8 @@ namespace Alamut.Utilites.AspNet.Test
 
             // assert 
             response.EnsureSuccessStatusCode(); // Status Code 200-299
-            Assert.Equal("text/html; charset=utf-8", 
-            response.Content.Headers.ContentType.ToString());
+            Assert.Equal("text/html; charset=utf-8", response.Content.Headers.ContentType.ToString());
+
         }
     }
 }

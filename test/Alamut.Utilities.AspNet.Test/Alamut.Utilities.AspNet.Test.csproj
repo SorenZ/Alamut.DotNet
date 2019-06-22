@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Alamut.Utilities.AspNet.Sut\Alamut.Utilities.AspNet.Sut.csproj" />
+    <ProjectReference Include="..\..\src\Alamut.Utilities.AspNet\Alamut.Utilities.AspNet.csproj" />
   </ItemGroup>
 
 </Project>
