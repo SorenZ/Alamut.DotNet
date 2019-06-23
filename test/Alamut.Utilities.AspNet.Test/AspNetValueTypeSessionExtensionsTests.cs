@@ -1,4 +1,4 @@
-using Alamut.Utilities.AspNet.Test.Helpers;
+﻿using Alamut.Utilities.AspNet.Test.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,11 +8,11 @@ using System;
 
 namespace Alamut.Utilities.AspNet.Test
 {
-    public class AspNetSessionTests
+    public class AspNetValueTypeSessionExtensionsTests
     {
         private readonly ISession _session;
 
-        public AspNetSessionTests()
+        public AspNetValueTypeSessionExtensionsTests()
         {
             _session = new MockSession();
         }

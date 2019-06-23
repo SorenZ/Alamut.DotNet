@@ -10,7 +10,6 @@ namespace Alamut.Utilities.AspNet.Session
         {
             session.SetString(key, JsonConvert.SerializeObject(value));
             
-            throw new NotImplementedException();
             // https://stackoverflow.com/questions/4865104/convert-any-object-to-a-byte/4865123
             // https://stackoverflow.com/questions/1446547/how-to-convert-an-object-to-a-byte-array-in-c-sharp
         }
