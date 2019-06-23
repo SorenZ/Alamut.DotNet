@@ -84,7 +84,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static bool? GetBool(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -93,7 +93,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static char? GetChar(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -102,7 +102,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
          public static double? GetDouble(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -111,7 +111,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static short? GetShort(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -120,7 +120,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static int? GetInt(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -129,7 +129,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static long? GetLong(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -138,7 +138,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static float? GetFloat(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -147,7 +147,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static ushort? GetUShort(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -156,7 +156,7 @@ namespace Alamut.Utilities.AspNet.Session
         
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static uint? GetUInt(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -165,7 +165,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static ulong? GetULong(this ISession session, string key) => 
             session.TryGetValue(key, out byte[] value)
@@ -174,7 +174,7 @@ namespace Alamut.Utilities.AspNet.Session
 
         /// <summary>
         /// Retrieve the value of the given key, if present.
-        /// otherwise, return false
+        /// otherwise, return null
         /// </summary>
         public static DateTime? GetDateTime(this ISession session, string key) =>
             session.TryGetValue(key, out byte[] value)
