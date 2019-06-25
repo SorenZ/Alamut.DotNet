@@ -8,17 +8,13 @@ namespace Alamut.Data.Sql.EF.Test
 {
     public class RepositoryTest
     {
-        private readonly AppDbContext _context;
-        public RepositoryTest()
-        {
-            _context = DbHelper.GetInMemoryInstance();
-        }
 
         [Fact]
         public void Repository_Create_Test()
         {
             // arrange
-            var repository = new Repository<Blog,int>(_context);
+            var context = DbHelper.GetInMemoryInstance();
+            var repository = new Repository<Blog,int>(context);
             var entity = new Blog
             {
                 Url = "https://github.com/SorenZ/Alamut.DotNet",
@@ -39,7 +35,8 @@ namespace Alamut.Data.Sql.EF.Test
         public void Repository_AddRange()
         {
             // arrange
-            var repository = new Repository<Blog,int>(_context);
+            var context = DbHelper.GetInMemoryInstance();
+            var repository = new Repository<Blog,int>(context);
             var entities = new []
             {
                 new Blog
