@@ -1,13 +1,13 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using Alamut.Data.Entity;
-//using Alamut.Data.Repository;
-//using Alamut.Data.Service;
-//using Alamut.Data.Structure;
-//using Alamut.Utilities.Http;
+﻿// using System;
+// using System.Collections.Generic;
+// using Alamut.Data.Entity;
+// using Alamut.Data.Repository;
+// using Alamut.Data.Service;
+// using Alamut.Data.Structure;
+// using Alamut.Utilities.Http;
 
-//namespace Alamut.Service
-//{
+// namespace Alamut.Service
+// {
 //    public class HistoryService<TEntity> : 
 //        CrudService<TEntity>,
 //        IHistoryService<TEntity> 
@@ -120,4 +120,4 @@
 //            return _historyRepository.GetMany(entityName, entityId);
 //        }
 //    }
-//}
+// }
