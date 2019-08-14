@@ -1,5 +1,8 @@
-﻿namespace Alamut.Utilities.Http
+﻿using System;
+
+namespace Alamut.Utilities.Http
 {
+    [Obsolete("use Alamut.Abstractions.Principal.IUserInfo instead")]
     public interface IUserResolverService
     {
         /// <summary>

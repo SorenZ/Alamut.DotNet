@@ -1,9 +1,11 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 
 namespace Alamut.Utilities.Http
 {
+    
     /// <summary>
     /// provide some information about Identity User throughout  domain services
     /// by the help of HttpContextAccessor
@@ -11,6 +13,7 @@ namespace Alamut.Utilities.Http
     /// <remarks>
     /// it can be used when HTTP Context is available
     /// </remarks>
+    [Obsolete("use Alamut.AspNet.Principal.UserInfoByHttpContext instead")]
     public class UserResolverServiceByHttpContext : IUserResolverService
     {
         private readonly IHttpContextAccessor _context;

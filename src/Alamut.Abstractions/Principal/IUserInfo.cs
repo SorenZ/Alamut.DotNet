@@ -31,6 +31,6 @@ namespace Alamut.Abstractions.Principal
         /// <summary>
         /// get current user browser information
         /// </summary>
-        string ClientDescription {get;}
+        string UserAgent {get;}
     }
 }

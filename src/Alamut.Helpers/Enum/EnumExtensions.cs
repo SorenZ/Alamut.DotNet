@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Alamut.Helpers.Enum
 {
@@ -29,5 +31,22 @@ namespace Alamut.Helpers.Enum
         {
             return (T)System.Enum.Parse(typeof(T), enumString);
         }
+
+        /// <summary>
+        /// Gets an attribute on an enum field value
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute you want to retrieve</typeparam>
+        /// <param name="enumVal">The enum value</param>
+        /// <returns>The attribute of type T that exists on the enum value</returns>
+        /// <example>string desc = myEnumVariable.GetAttributeOfType<DescriptionAttribute>().Description;</example>
+        //public static T GetAttributeOfType<T>(this System.Enum enumVal) where T : System.Attribute
+        //{
+        //    var type = enumVal.GetType();
+        //    var memInfo = type.GetMember(enumVal.ToString());
+        //    var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
+        //    return (attributes.Lenght > 0)
+        //        ? (T)attributes[0]
+        //        : null;
+        //}
     }
 }
