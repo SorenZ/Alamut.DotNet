@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <Description>provides repository pattern for Sql database with the help of Entity Framework</Description>
-    <VersionPrefix>3.1.0</VersionPrefix>
+    <VersionPrefix>3.2.0</VersionPrefix>
     <Authors>Soren Zand</Authors>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Alamut.Data.Sql.EF</AssemblyName>
     <PackageId>Alamut.Data.Sql.EF</PackageId>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>

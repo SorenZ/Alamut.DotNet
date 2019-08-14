@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <Description>provide data repository base for mongoDB backend store</Description>
-    <VersionPrefix>3.0.3</VersionPrefix>
+    <VersionPrefix>3.1.0</VersionPrefix>
     <Authors>Soren Zand</Authors>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Alamut.Data.MongoDb</AssemblyName>
     <PackageId>Alamut.Data.MongoDb</PackageId>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
