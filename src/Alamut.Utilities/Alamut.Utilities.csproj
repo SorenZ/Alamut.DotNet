@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <Description>Provides general utilities for data driven dotnet application.</Description>
-    <VersionPrefix>3.0.3</VersionPrefix>
+    <VersionPrefix>3.1.0</VersionPrefix>
     <Authors>Soren Zand</Authors>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Alamut.Utilities</AssemblyName>
     <PackageId>Alamut.Utilities</PackageId>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
