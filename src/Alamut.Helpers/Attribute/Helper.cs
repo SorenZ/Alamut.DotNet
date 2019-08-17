@@ -9,12 +9,12 @@ namespace Alamut.Helpers.Attribute
     public static class Helper
     {
         /// <summary>
-        /// gets display properties by proprty name
+        /// gets display properties by property name
         /// </summary>
         /// <param name="properties"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static Dictionary<string, string> GetDisplayNameByProperites(IEnumerable<string> properties, Type type)
+        public static Dictionary<string, string> GetDisplayNameByProperties(IEnumerable<string> properties, Type type)
         {
             return type.GetMembers()
                 .Where(q => q.GetCustomAttributes(typeof(DisplayNameAttribute), true).Any())
@@ -30,18 +30,19 @@ namespace Alamut.Helpers.Attribute
 
 
         /// <summary>
-        /// recommended for geting custom attribute in invocation
+        /// recommended for getting custom attribute in invocation
         /// </summary>
         /// <typeparam name="T">attribute</typeparam>
         /// <param name="memberInfo"></param>
         /// <returns>attribute information if exist, otherwise null.</returns>
         /// <see cref="http://stackoverflow.com/questions/2536675/access-custom-attribute-on-method-from-castle-windsor-interceptor"/>
+        [Obsolete("use EnumExtensions.GetAttribute instead")]
         public static T GetAttribute<T>(MemberInfo memberInfo) where T : class
         {
             return memberInfo.GetCustomAttribute(typeof(T), true) as T;
-            //return System.Attribute.GetCustomAttribute(memberInfo, typeof(T), true) as T;
         }
 
+        [Obsolete("use EnumExtensions.GetAttribute instead")]
         public static T GetAttribute<T>(System.Enum enumValue) where T : System.Attribute
         {
             var memberInfo = enumValue.GetType()

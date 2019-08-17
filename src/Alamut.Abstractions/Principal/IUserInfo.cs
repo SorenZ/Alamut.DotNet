@@ -26,7 +26,7 @@ namespace Alamut.Abstractions.Principal
         /// <summary>
         /// gets current user Ip Address
         /// </summary>
-        string ClientIpAddress { get; }
+        string GetClientIpAddress(bool tryUseXForwardHeader = true);
 
         /// <summary>
         /// get current user browser information
