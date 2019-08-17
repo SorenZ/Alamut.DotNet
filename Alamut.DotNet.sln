@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alamut.Data.Test", "test\Al
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alamut.Abstractions", "src\Alamut.Abstractions\Alamut.Abstractions.csproj", "{C292C6A2-7F51-4D0F-A93A-EAC46F01852F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alamut.Extensions.Microsoft.DependencyInjection", "src\Alamut.Extensions.Microsoft.DependencyInjection\Alamut.Extensions.Microsoft.DependencyInjection.csproj", "{EEDC594C-B00F-4886-B06E-F9AF3275D817}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,10 @@ Global
 		{C292C6A2-7F51-4D0F-A93A-EAC46F01852F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C292C6A2-7F51-4D0F-A93A-EAC46F01852F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C292C6A2-7F51-4D0F-A93A-EAC46F01852F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEDC594C-B00F-4886-B06E-F9AF3275D817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEDC594C-B00F-4886-B06E-F9AF3275D817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEDC594C-B00F-4886-B06E-F9AF3275D817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDC594C-B00F-4886-B06E-F9AF3275D817}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{2EB1CE6A-A689-44D8-9DCD-8AF1A2DB6FA7} = {DEBF0D01-9702-493A-864C-BF856280F281}
 		{E620A9F0-803D-4622-B5F0-892FAB326D98} = {DEBF0D01-9702-493A-864C-BF856280F281}
 		{C292C6A2-7F51-4D0F-A93A-EAC46F01852F} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
+		{EEDC594C-B00F-4886-B06E-F9AF3275D817} = {17982A1F-1B1A-41C8-A200-1922BA6FFD8E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22CAA7F6-8246-4BF4-9515-E68BDB92BC63}
