@@ -36,7 +36,6 @@ namespace Alamut.Helpers.Attribute
         /// <param name="memberInfo"></param>
         /// <returns>attribute information if exist, otherwise null.</returns>
         /// <see cref="http://stackoverflow.com/questions/2536675/access-custom-attribute-on-method-from-castle-windsor-interceptor"/>
-        [Obsolete("use EnumExtensions.GetAttribute instead")]
         public static T GetAttribute<T>(MemberInfo memberInfo) where T : class
         {
             return memberInfo.GetCustomAttribute(typeof(T), true) as T;
