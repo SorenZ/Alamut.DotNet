@@ -7,6 +7,7 @@ namespace Alamut.Data.Structure
     /// It can be used as web service result
     /// </summary>
     /// <remarks>result for void Service</remarks>
+    [Obsolete("use Result in Alamut.Abstractions package, it will remove in next major version")]
     public class ServiceResult
     {
         public string Message { get; set; }
@@ -46,7 +47,7 @@ namespace Alamut.Data.Structure
 
         /// <summary>
         /// return a ServiceResult from exception
-        /// most inmportant exception included in error message
+        /// most important exception included in error message
         /// </summary>
         /// <param name="ex">the exception</param>
         /// <param name="statusCode"></param>

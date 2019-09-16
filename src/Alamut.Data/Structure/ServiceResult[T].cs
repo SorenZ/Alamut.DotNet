@@ -3,10 +3,11 @@ using System;
 namespace Alamut.Data.Structure
 {
     /// <summary>
-    /// provides a generic data weapper for Service result 
+    /// provides a generic data wrapper for Service result 
     /// </summary>
     /// <typeparam name="T">data type of return</typeparam>
     /// <remarks>result for not void result</remarks>
+    [Obsolete("use Result<T> in Alamut.Abstractions package, it will remove in next major version")]
     public class ServiceResult<T> : ServiceResult
     {
         public T Data { get; set; }
