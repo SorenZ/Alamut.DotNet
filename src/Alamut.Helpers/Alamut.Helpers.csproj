@@ -1,16 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>    
-    <VersionPrefix>3.1.0</VersionPrefix>
-    <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Alamut.Helpers</AssemblyName>
+    <LangVersion>latest</LangVersion>
+
     <PackageId>Alamut.Helpers</PackageId>
+    <Version>3.2.0</Version>
+    <Authors>Hamed ZVand</Authors>
+    <Description>Provides basics helpers for data driven programming in dotnet</Description>
+
+    <AssemblyName>Alamut.Helpers</AssemblyName>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Description>Provides basics helpers for data driven programming in dotnet.</Description>
+
+    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
+    <PackageIconUrl>https://sorenz.github.io/alamut-256.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>

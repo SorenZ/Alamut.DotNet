@@ -1,16 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Provides service layer helper for data driven application.</Description>
-    <VersionPrefix>3.1.1</VersionPrefix>
-    <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Alamut.Service</AssemblyName>
+    <LangVersion>latest</LangVersion>
+
     <PackageId>Alamut.Service</PackageId>
+    <Version>3.2.0</Version>
+    <Authors>Hamed ZVand</Authors>
+    <Description>Provides service layer helper for data driven Dotnet application</Description>
+    
+    <AssemblyName>Alamut.Service</AssemblyName>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>3.1.0</Version>
+    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
     <PackageIconUrl>https://sorenz.github.io/alamut-256.png</PackageIconUrl>
   </PropertyGroup>

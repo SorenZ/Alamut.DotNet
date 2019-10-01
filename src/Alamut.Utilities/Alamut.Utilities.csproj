@@ -1,16 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Provides general utilities for data driven dotnet application.</Description>
-    <VersionPrefix>3.1.0</VersionPrefix>
-    <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Alamut.Utilities</AssemblyName>
+    <LangVersion>latest</LangVersion>
+
     <PackageId>Alamut.Utilities</PackageId>
+    <Version>3.2.0</Version>
+    <Authors>Soren Zand</Authors>
+    <Description>Provides general utilities for data driven dotnet application</Description>
+    
+    <AssemblyName>Alamut.Utilities</AssemblyName>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
+    <PackageIconUrl>https://sorenz.github.io/alamut-256.png</PackageIconUrl>
   </PropertyGroup>
   
   <ItemGroup>

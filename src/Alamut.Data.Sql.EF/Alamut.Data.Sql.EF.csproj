@@ -1,16 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>provides repository pattern for Sql database with the help of Entity Framework</Description>
-    <VersionPrefix>3.2.0</VersionPrefix>
-    <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Alamut.Data.Sql.EF</AssemblyName>
+    <LangVersion>latest</LangVersion>
+
     <PackageId>Alamut.Data.Sql.EF</PackageId>
+    <Version>3.2.0</Version>
+    <Authors>Hamed ZVand</Authors>
+    <Description>provides repository pattern for Sql database with the help of Entity Framework</Description>
+    
+    <AssemblyName>Alamut.Data.Sql.EF</AssemblyName>
+    
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>3.1.0</Version>
+    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
     <PackageIconUrl>https://sorenz.github.io/alamut-256.png</PackageIconUrl>
   </PropertyGroup>
