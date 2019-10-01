@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using Alamut.Data.Entity;
 using Alamut.Data.Repository;
 using Alamut.Data.Service;
-using Alamut.Data.Structure;
+using Alamut.Abstractions.Structure;
 using AutoMapper;
 
 namespace Alamut.Service
@@ -18,30 +18,30 @@ namespace Alamut.Service
         {  }
 
 
-        public virtual ServiceResult<TKey> Create<TModel>(TModel model)
+        public virtual Result<TKey> Create<TModel>(TModel model)
         { 
             var entity = Mapper.Map<TEntity>(model);
             
             return base.Repository.Create(entity);
         }
 
-        public virtual ServiceResult Update<TModel>(TKey id, TModel model)
+        public virtual Result Update<TModel>(TKey id, TModel model)
         {
             var entity = base.Repository.GetById(id);
 
             if (entity == null)
-                return ServiceResult.Error("There is no entity with Id : " + id);
+                return Result.Error("There is no entity with Id : " + id);
 
             return base.Repository.Update(Mapper.Map(model, entity));
         }
 
-        public ServiceResult UpdateOne<TField>(TKey id, Expression<Func<TEntity, TField>> memberExpression, TField value) => 
+        public Result UpdateOne<TField>(TKey id, Expression<Func<TEntity, TField>> memberExpression, TField value) => 
             base.Repository.UpdateOne(id, memberExpression,value);
 
-        public virtual ServiceResult Delete(TKey id)
+        public virtual Result Delete(TKey id)
         {
             if (id == null)
-                return ServiceResult.Error("Id could not be null");
+                return Result.Error("Id could not be null");
 
             return base.Repository.Delete(id);
         }
