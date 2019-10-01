@@ -1,5 +1,5 @@
 ﻿using System;
-using Alamut.Data.Structure;
+using Alamut.Abstractions.Structure;
 
 namespace Alamut.Data.Sql
 {
@@ -8,7 +8,7 @@ namespace Alamut.Data.Sql
     /// </summary>
     public interface IUnitOfWork : IDisposable
     {
-        ServiceResult Commit();
+        Result Commit();
         void RollBack();
     }
 }

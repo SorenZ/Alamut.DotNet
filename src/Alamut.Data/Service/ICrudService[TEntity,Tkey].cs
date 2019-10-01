@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Alamut.Data.Entity;
-using Alamut.Data.Structure;
+using Alamut.Abstractions.Structure;
 
 namespace Alamut.Data.Service
 {
@@ -22,7 +22,7 @@ namespace Alamut.Data.Service
         /// <typeparam name="TModel"></typeparam>
         /// <param name="model"></param>
         /// <returns></returns>
-        ServiceResult<TKey> Create<TModel>(TModel model);
+        Result<TKey> Create<TModel>(TModel model);
 
         /// <summary>
         /// update an item by id
@@ -33,7 +33,7 @@ namespace Alamut.Data.Service
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        ServiceResult Update<TModel>(TKey id, TModel model);
+        Result Update<TModel>(TKey id, TModel model);
 
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Alamut.Data.Service
         /// <remarks>
         /// Even if multiple documents match the filter, only one will be updated because we used UpdateOne
         /// </remarks>
-        ServiceResult UpdateOne<TField>(TKey id,
+        Result UpdateOne<TField>(TKey id,
             Expression<Func<TEntity, TField>> memberExpression,
             TField value);
 
@@ -55,7 +55,7 @@ namespace Alamut.Data.Service
         /// </summary>
         /// <param name="id">entity or document Id</param>
         /// <returns></returns>
-        ServiceResult Delete(TKey id);
+        Result Delete(TKey id);
 
         /// <summary>
         /// get single result and map to demanded type
