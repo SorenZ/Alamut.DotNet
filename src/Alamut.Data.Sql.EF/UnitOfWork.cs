@@ -1,7 +1,7 @@
 ﻿using System;
 using Alamut.Data.Entity;
 using Alamut.Data.Repository;
-using Alamut.Data.Structure;
+using Alamut.Abstractions.Structure;
 using Microsoft.EntityFrameworkCore;
 
 namespace Alamut.Data.Sql.EF
@@ -15,11 +15,11 @@ namespace Alamut.Data.Sql.EF
             _context = context;
         }
 
-        public ServiceResult Commit()
+        public Result Commit()
         {
             var updateCount = _context.SaveChanges();
 
-            return ServiceResult.Okay($"{updateCount} item(s) have been updated.");
+            return Result.Okay($"{updateCount} item(s) have been updated.");
         }
 
         public void RollBack() => _context.Database.CurrentTransaction.Rollback();

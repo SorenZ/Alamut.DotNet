@@ -1,16 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Provides general utilities for data driven dotnet application.</Description>
-    <VersionPrefix>3.1.0</VersionPrefix>
-    <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Alamut.Utilities</AssemblyName>
+    <LangVersion>latest</LangVersion>
+
     <PackageId>Alamut.Utilities</PackageId>
+    <Version>3.2.0</Version>
+    <Authors>Soren Zand</Authors>
+    <Description>Provides general utilities for data driven dotnet application</Description>
+    
+    <AssemblyName>Alamut.Utilities</AssemblyName>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
   
   <ItemGroup>
@@ -26,6 +32,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Alamut.Data\Alamut.Data.csproj" />
     <ProjectReference Include="..\Alamut.Helpers\Alamut.Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="images\icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>

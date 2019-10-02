@@ -1,23 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description></Description>
-    <VersionPrefix>3.0.4</VersionPrefix>
-    <Authors>Hamed ZVand</Authors>
-    <TargetFramework>netstandard1.6</TargetFramework>
-    <AssemblyName>Alamut.Data</AssemblyName>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+
     <PackageId>Alamut.Data</PackageId>
+    <Version>3.2.0</Version>
+    <Authors>Hamed ZVand</Authors>
+    <Description>libraries, tools and helpers for .NET Core apps</Description>
+
+    <AssemblyName>Alamut.Data</AssemblyName>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>3.0.4</Version>
+    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
-    <PackageIconUrl>https://sorenz.github.io/alamut-256.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Alamut.Abstractions" Version="0.0.4" />
     <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="images\icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>

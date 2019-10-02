@@ -1,17 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>provide data repository base for mongoDB backend store</Description>
-    <VersionPrefix>3.1.0</VersionPrefix>
-    <Authors>Soren Zand</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Alamut.Data.MongoDb</AssemblyName>
+    <LangVersion>latest</LangVersion>
+
     <PackageId>Alamut.Data.MongoDb</PackageId>
+    <Version>3.2.0</Version>
+    <Authors>Hamed ZVand</Authors>
+    <Description>provide data repository base for mongoDB backend store</Description>
+    <AssemblyName>Alamut.Data.MongoDb</AssemblyName>
+    
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>3.0.3</Version>
+    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sorenz/alamut.dotnet</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +27,10 @@
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="images\icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>

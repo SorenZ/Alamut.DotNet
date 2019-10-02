@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Http;
-using Alamut.Data.Structure;
+using Alamut.Abstractions.Structure;
 using Newtonsoft.Json;
 
 namespace Alamut.Utilities.Google
@@ -16,7 +16,7 @@ namespace Alamut.Utilities.Google
             _chaptchaConfig = chaptchaConfig;
         }
 
-        public async Task<ServiceResult> ValidateGoogleChaptcha(string rechaptchaKey)
+        public async Task<Result> ValidateGoogleChaptcha(string rechaptchaKey)
         {
 
             using (var client = new HttpClient())
@@ -35,14 +35,14 @@ namespace Alamut.Utilities.Google
                     {
                         var json = await response.Content.ReadAsStringAsync();
                         var result = JsonConvert.DeserializeObject<GoogelSiteVerifyResponse>(json);
-                        return result.success ? ServiceResult.Okay() : ServiceResult.Error();
+                        return result.success ? Result.Okay() : Result.Error();
                     }
 
-                    return ServiceResult.Error(response.ReasonPhrase);
+                    return Result.Error(response.ReasonPhrase);
                 }
                 catch (Exception ex)
                 {
-                    return ServiceResult.Exception(ex);
+                    return Result.Exception(ex);
                 }
             }
         }

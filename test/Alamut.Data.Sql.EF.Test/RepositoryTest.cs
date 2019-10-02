@@ -1,7 +1,7 @@
 using Alamut.Data.Sql.EF.Repositories;
 using Alamut.Data.Sql.EF.Test.Database;
 using Alamut.Data.SSOT;
-using Alamut.Data.Structure;
+using Alamut.Abstractions.Structure;
 using Xunit;
 
 namespace Alamut.Data.Sql.EF.Test
@@ -20,7 +20,7 @@ namespace Alamut.Data.Sql.EF.Test
                 Url = "https://github.com/SorenZ/Alamut.DotNet",
                 Rating = 5
             };
-            var expected = ServiceResult<int>.Okay(1, Messages.ItemCreated);
+            var expected = Result<int>.Okay(1, Messages.ItemCreated);
 
 
             // act
@@ -50,7 +50,7 @@ namespace Alamut.Data.Sql.EF.Test
                 Rating = 4
             }
             };
-            var expected = ServiceResult.Okay(Messages.ItemsCreated);
+            var expected = Result.Okay(Messages.ItemsCreated);
 
 
             // act

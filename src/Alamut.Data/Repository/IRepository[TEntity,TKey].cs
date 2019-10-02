@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Alamut.Data.Entity;
-using Alamut.Data.Structure;
+using Alamut.Abstractions.Structure;
 
 namespace Alamut.Data.Repository
 {
@@ -24,7 +24,7 @@ namespace Alamut.Data.Repository
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="commit">save changes into database</param>
-        ServiceResult<TKey> Create(TEntity entity, bool commit = true);
+        Result<TKey> Create(TEntity entity, bool commit = true);
 
         /// <summary>
         /// add list of item into database
@@ -32,7 +32,7 @@ namespace Alamut.Data.Repository
         /// </summary>
         /// <param name="list"></param>
         /// <param name="commit"></param>
-        ServiceResult AddRange(IEnumerable<TEntity> list, bool commit = true);
+        Result AddRange(IEnumerable<TEntity> list, bool commit = true);
 
         /// <summary>
         /// update item total value
@@ -40,7 +40,7 @@ namespace Alamut.Data.Repository
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="commit"></param>
-        ServiceResult Update(TEntity entity, bool commit = true);
+        Result Update(TEntity entity, bool commit = true);
 
         /// <summary>
         /// update an item (one field) by expression member selector by id
@@ -53,7 +53,7 @@ namespace Alamut.Data.Repository
         /// <remarks>
         /// Even if multiple documents match the filter, only one will be updated because we used UpdateOne
         /// </remarks>
-        ServiceResult UpdateOne<TField>(TKey id, 
+        Result UpdateOne<TField>(TKey id, 
             Expression<Func<TEntity, TField>> memberExpression, 
             TField value);
 
@@ -69,7 +69,7 @@ namespace Alamut.Data.Repository
         /// <remarks>
         /// Even if multiple documents match the filter, only one will be updated because we used UpdateOne
         /// </remarks>
-        ServiceResult UpdateOne<TFilter, TField>(Expression<Func<TEntity, bool>> filterExpression, 
+        Result UpdateOne<TFilter, TField>(Expression<Func<TEntity, bool>> filterExpression, 
             Expression<Func<TEntity, TField>> memberExpression, TField value);
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Alamut.Data.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <param name="fieldset"></param>
-        ServiceResult GenericUpdate(TKey id, Dictionary<string, dynamic> fieldset);
+        Result GenericUpdate(TKey id, Dictionary<string, dynamic> fieldset);
 
         /// <summary>
         /// add an item to a list (if not exist)
@@ -86,7 +86,7 @@ namespace Alamut.Data.Repository
         /// <param name="id"></param>
         /// <param name="memberExpression"></param>
         /// <param name="value"></param>
-        ServiceResult AddToList<TValue>(TKey id, 
+        Result AddToList<TValue>(TKey id, 
             Expression<Func<TEntity, IEnumerable<TValue>>> memberExpression, 
             TValue value);
 
@@ -97,7 +97,7 @@ namespace Alamut.Data.Repository
         /// <param name="id"></param>
         /// <param name="memberExpression"></param>
         /// <param name="value"></param>
-        ServiceResult RemoveFromList<TValue>(TKey id, 
+        Result RemoveFromList<TValue>(TKey id, 
             Expression<Func<TEntity, IEnumerable<TValue>>> memberExpression, 
             TValue value);
 
@@ -106,14 +106,14 @@ namespace Alamut.Data.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <param name="commit"></param>
-        ServiceResult Delete(TKey id, bool commit = true);
+        Result Delete(TKey id, bool commit = true);
 
         /// <summary>
         /// Deletes multiple documents.
         /// </summary>
         /// <param name="predicate">represent expression to filter delete</param>
         /// <param name="commit"></param>
-        ServiceResult DeleteMany(Expression<Func<TEntity, bool>> predicate
+        Result DeleteMany(Expression<Func<TEntity, bool>> predicate
             , bool commit = true);
     }
 }
