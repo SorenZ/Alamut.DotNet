@@ -17,7 +17,7 @@ namespace Alamut.Data.Sql.EF.Test
         public void GetById()
         {
             // arrange
-            var expected = DbHelper.Seed_SignleBlog(_context);
+            var expected = DbHelper.Seed_SingleBlog(_context);
             var repository = new QueryRepository<Blog,int>(_context);
 
             // act
@@ -33,7 +33,7 @@ namespace Alamut.Data.Sql.EF.Test
         public void GetAll()         
         {
             // arrange 
-            DbHelper.Seed_SignleBlog(_context);
+            DbHelper.Seed_SingleBlog(_context);
             var repository = new QueryRepository<Blog,int>(_context);
 
             // act

@@ -15,7 +15,7 @@ namespace Alamut.Data.Sql.EF.Test.Database
             return context;
         }
 
-        public static Blog Seed_SignleBlog(AppDbContext context)
+        public static Blog Seed_SingleBlog(AppDbContext context)
         {
             Blog entity = new Blog
             {
