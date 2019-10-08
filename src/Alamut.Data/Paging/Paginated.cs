@@ -15,7 +15,7 @@ namespace Alamut.Data.Paging
         /// <param name="totalItemCount"> The total item count. </param>
         /// <param name="currentPage"> The current page. </param>
         /// <param name="pageSize"> Size of the page. </param>
-        public Paginated(IEnumerable<T> data, long totalItemCount, int currentPage, int pageSize)
+        public Paginated(IList<T> data, long totalItemCount, int currentPage, int pageSize)
         {
             this.TotalRowsCount = totalItemCount;
             this.PageSize = pageSize;
@@ -27,7 +27,7 @@ namespace Alamut.Data.Paging
         /// Gets or sets the data.
         /// </summary>
         /// <value> The data. </value>
-        public IEnumerable<T> Data { get; private set; }
+        public IList<T> Data { get; private set; }
 
         /// <summary>
         /// Gets or sets the total rows count.

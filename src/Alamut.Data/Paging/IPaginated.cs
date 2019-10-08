@@ -2,12 +2,12 @@
 
 namespace Alamut.Data.Paging
 {
-    public interface IPaginated<out T> : IPaginated
+    public interface IPaginated<T> : IPaginated
     {
         /// <summary>
         /// Gets the data.
         /// </summary>
-        IEnumerable<T> Data { get; }
+        IList<T> Data { get; }
     }
 
     public interface IPaginated

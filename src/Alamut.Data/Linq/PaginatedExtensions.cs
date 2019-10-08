@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Alamut.Data.Paging;
+using Microsoft.EntityFrameworkCore;
 
 namespace Alamut.Data.Linq
 {
-    public static class QueryableExtensions
+    public static class PaginatedExtensions
     {
         /// <summary>
         /// Gets the paginated data.
@@ -40,8 +42,25 @@ namespace Alamut.Data.Linq
         public static IPaginated<T> ToPaginated<T>(this IQueryable<T> query, IPaginatedCriteria paginatedCriteria)
         {
             return new Paginated<T>(
-                query.ToPage(paginatedCriteria.StartIndex, paginatedCriteria.PageSize),
+                query.ToPage(paginatedCriteria.StartIndex, paginatedCriteria.PageSize).ToList(),
                 query.Count(),
+                paginatedCriteria.CurrentPage,
+                paginatedCriteria.PageSize);
+        }
+
+        /// <summary>
+        /// Creates an <see cref="IPaginated{T}" /> instance from the specified query.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="query">The query.</param>
+        /// <param name="paginatedCriteria">The paginated criteria.</param>
+        /// <returns></returns>
+        public static async Task<IPaginated<T>> ToPaginatedAsync<T>(this IQueryable<T> query, 
+        IPaginatedCriteria paginatedCriteria)
+        {
+            return new Paginated<T>(
+                await query.ToPage(paginatedCriteria.StartIndex, paginatedCriteria.PageSize).ToListAsync(),
+                await query.CountAsync(),
                 paginatedCriteria.CurrentPage,
                 paginatedCriteria.PageSize);
         }

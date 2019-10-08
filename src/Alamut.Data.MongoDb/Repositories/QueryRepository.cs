@@ -128,7 +128,7 @@ namespace Alamut.Data.MongoDb.Repositories
                 .Skip(internalCriteria.StartIndex)
                 .Limit(internalCriteria.PageSize);
 
-            return new Paginated<TDocument>(query.ToEnumerable(),
+            return new Paginated<TDocument>(query.ToList(),
                 Collection.Find(new BsonDocument()).Count(),
                 internalCriteria.CurrentPage,
                 internalCriteria.PageSize);
