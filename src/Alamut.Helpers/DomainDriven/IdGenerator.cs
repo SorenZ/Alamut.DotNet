@@ -11,7 +11,7 @@ namespace Alamut.Helpers.DomainDriven
         /// provides a unique id based on BSON object Id
         /// </summary>
         /// <returns></returns>
-        public string GetNewId()
+        public static string GetNewId()
         {
             return ObjectId.GenerateNewId().ToString();
         }
@@ -20,7 +20,7 @@ namespace Alamut.Helpers.DomainDriven
         /// provides a new unique ObjectId 
         /// </summary>
         /// <returns></returns>
-        public ObjectId GetObjectId()
+        public static ObjectId GetObjectId()
         {
             return ObjectId.GenerateNewId();
         }
