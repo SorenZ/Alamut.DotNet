@@ -10,7 +10,6 @@
     <Description>provides repository pattern for Sql database with the help of Entity Framework</Description>
     
     <AssemblyName>Alamut.Data.Sql.EF</AssemblyName>
-    
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -29,7 +28,7 @@
     <PackageReference Include="Alamut.Abstractions" Version="0.0.4" />
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
+    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" /> -->
   </ItemGroup>
 
   <ItemGroup>

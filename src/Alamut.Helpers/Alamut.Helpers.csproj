@@ -26,6 +26,7 @@
     <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+    <PackageReference Include="MongoDB.Bson" Version="2.10.0" />
   </ItemGroup>
 
   <ItemGroup>
